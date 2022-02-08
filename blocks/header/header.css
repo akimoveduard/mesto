@@ -1,5 +1,25 @@
 .header {
-  max-width: 80px;
-  padding-bottom: 41px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 45px 10% 0 10%;
+}
+
+.header::after {
+  content: "";
+  height: 1px;
+  display: block;
+  margin-top: 41px;
   border-bottom: 1px solid #545454;
+}
+
+@media screen and (max-width: 425px) {
+  .header {
+    margin: 0 auto;
+    padding: 28px 27px 31px 27px;
+    border-bottom: 1px solid #545454;
+  }
+
+  .header::after {
+    display: none;
+  }
 }
