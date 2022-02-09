@@ -1,0 +1,9 @@
+.photo-grid__button-like {
+  display: block;
+  background-image: url(../../../images/icon-like.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 22px 19px;
+  min-width: 22px;
+  margin-right: 20px;
+}

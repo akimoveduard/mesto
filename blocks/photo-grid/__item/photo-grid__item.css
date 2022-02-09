@@ -1,0 +1,9 @@
+.photo-grid__item {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  min-width: 282px;
+  max-width: 282px;
+  overflow: hidden;
+  border-radius: 10px;
+}

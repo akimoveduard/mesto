@@ -1,7 +1,7 @@
 .header {
-  max-width: 800px;
+  max-width: 880px;
   margin: 0 auto;
-  padding: 45px 10% 0 10%;
+  padding: 45px 10% 6px 10%;
   transition: .5s ease;
 }
 
@@ -9,7 +9,7 @@
   content: "";
   height: 1px;
   display: block;
-  margin-top: 41px;
+  margin-top: 36px;
   border-bottom: 1px solid #545454;
   transition: .5s ease;
 }
