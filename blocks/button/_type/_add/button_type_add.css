@@ -1,0 +1,18 @@
+.button_type_add {
+  display: block;
+  min-width: 150px;
+  min-height: 50px;
+  border: 2px solid #ffffff;
+  background-image: url(../../../../images/icon-plus.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 22px;
+  margin-left: auto;
+}
+
+@media screen and (max-width: 767px) {
+  .button_type_add {
+    width: 100%;
+    background-size: 16px;
+  }
+}

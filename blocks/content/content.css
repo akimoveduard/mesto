@@ -2,13 +2,13 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 36px 10% 67px 10%;
-
-  color: #fff;
+  transition: .5s ease;
 }
 
 @media screen and (max-width: 425px) {
   .content {
     margin: 0 auto;
     padding: 38px 19px 48px 19px;
+    transition: .5s ease;
   }
 }

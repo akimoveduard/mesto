@@ -1,0 +1,6 @@
+.profile__title {
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  align-items: flex-end;
+}

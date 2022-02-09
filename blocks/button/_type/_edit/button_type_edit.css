@@ -1,0 +1,19 @@
+.button_type_edit {
+  display: block;
+  min-width: 24px;
+  min-height: 24px;
+  border: 1px solid #ffffff;
+  background-image: url(../../../../images/icon-edit.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 10px 10px;
+  align-self: flex-end;
+  margin-left: 18px;
+  margin-bottom: 18px;
+}
+
+@media screen and (max-width: 767px) {
+  .button_type_edit {
+    margin-bottom: 14px;
+  }
+}

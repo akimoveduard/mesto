@@ -2,6 +2,7 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 45px 10% 0 10%;
+  transition: .5s ease;
 }
 
 .header::after {
@@ -10,6 +11,7 @@
   display: block;
   margin-top: 41px;
   border-bottom: 1px solid #545454;
+  transition: .5s ease;
 }
 
 @media screen and (max-width: 425px) {
@@ -17,6 +19,7 @@
     margin: 0 auto;
     padding: 28px 27px 31px 27px;
     border-bottom: 1px solid #545454;
+    transition: .5s ease;
   }
 
   .header::after {
