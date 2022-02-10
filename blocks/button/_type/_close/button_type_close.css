@@ -8,11 +8,18 @@
   width: 32px;
   height: 32px;
   border: 0;
-  margin-bottom: 8px;
-  align-self: flex-end;
-  border: 1px solid red;
+  position: absolute;
+  top: -40px;
+  right: -20px;
 }
 
 .button_type_close:hover {
   cursor: pointer;
+}
+
+@media screen and (max-width: 540px) {
+  .button_type_close {
+    background-size: 20px;
+    right: 13px;
+  }
 }

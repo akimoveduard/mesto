@@ -1,6 +1,6 @@
 .edit-form__title {
   padding: 0;
-  margin: 0 0 25px 0;
+  margin: 34px 36px 24px 36px;
   font-size: 24px;
   line-height: 29px;
   font-weight: 900;
@@ -10,6 +10,6 @@
   .edit-form__title {
     font-size: 18px;
     line-height: 22px;
-    margin-bottom: 40px;
+    margin: 25px 22px 44px 22px;
   }
 }

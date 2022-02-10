@@ -1,8 +1,22 @@
 .popup {
-  background-color: rgba(0,0,0,50%);
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
+  bottom: 0;
+  right: 0;
+  box-sizing: border-box;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup::before {
+  position: absolute;
+  content: '';
+  z-index: -1;
   width: 100%;
   height: 100%;
+  background-color: rgba(0,0,0,50%);
 }

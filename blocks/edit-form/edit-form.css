@@ -1,20 +1,10 @@
 .edit-form {
-  box-sizing: border-box;
+  box-sizing: content-box;
   border-radius: 10px;
-  padding: 34px;
+  max-width: 100%;
   margin: 0 19px;
   background-color: #ffffff;
-  width: 100%;
-  height: 100%;
-  max-width: 430px;
-  max-height: 330px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-
-@media screen and (max-width: 425px) {
-  .edit-form {
-    padding: 25px 22px;
-  }
 }
