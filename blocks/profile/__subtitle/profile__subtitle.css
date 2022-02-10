@@ -10,11 +10,17 @@
   padding-right: 42px;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1024px) {
   .profile__subtitle {
     font-size: 14px;
-    line-height: 17px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .profile__subtitle {
     text-align: center;
+    font-size: 14px;
+    line-height: 17px;
     padding: 0;
   }
 }

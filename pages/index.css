@@ -29,3 +29,12 @@
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
+
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__wrapper/popup__wrapper.css);
+
+@import url(../blocks/button/_type/_close/button_type_close.css);
+@import url(../blocks/edit-form/edit-form.css);
+@import url(../blocks/edit-form/__title/edit-form__title.css);
+@import url(../blocks/edit-form/__input/edit-form__input.css);
+@import url(../blocks/edit-form/__submit/edit-form__submit.css);

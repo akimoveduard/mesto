@@ -1,0 +1,15 @@
+.edit-form__title {
+  padding: 0;
+  margin: 0 0 25px 0;
+  font-size: 24px;
+  line-height: 29px;
+  font-weight: 900;
+}
+
+@media screen and (max-width: 425px) {
+  .edit-form__title {
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 40px;
+  }
+}

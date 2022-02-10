@@ -1,0 +1,22 @@
+.edit-form__submit {
+  background-color: #000000;
+  color: #ffffff;
+  border: 0;
+  margin: 0;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  padding: 14px 10px;
+}
+
+.edit-form__submit:hover {
+  opacity: .8;
+  transition: .5 ease;
+}
+
+@media screen and (max-width: 425px) {
+  .edit-form__submit {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
