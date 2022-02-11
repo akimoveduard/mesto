@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mesto Russia</title>
   <link rel="stylesheet" href="./pages/index.css">
 </head>
@@ -17,11 +17,9 @@
       <div class="profile__info">
         <div class="profile__title">
           <h1 class="profile__name">Пабло Диего Хосе Франциско де Паула Хуан Непомукено Криспин Криспиано де ла Сантисима Тринидад Руиз Пикассо</h1>
-          <!-- <h1 class="profile__name">Жак-Ив Кусто</h1> -->
           <button class="button button_type_edit" name="profile-button-open"></button>
         </div>
         <p class="profile__about">Испанский и французский художник, скульптор, график, театральный художник, керамист и дизайнер</p>
-        <!-- <p class="profile__subtitle">Исследователь океана</p> -->
       </div>
       <button class="button button_type_add"></button>
     </section>
@@ -75,7 +73,7 @@
   <footer class="footer">
     <p class="footer__copyright">&copy;&nbsp;2020 Mesto Russia</p>
   </footer>
-  <!-- Модальное окно с формой-->
+  <!-- Модальное окно с формой профиля -->
   <section class="popup popup_type_profile" aria-label="Форма редактирования">
     <div class="popup__wrapper">
       <button class="button button_type_close" name="profile-button-close"></button>
@@ -83,7 +81,7 @@
         <h2 class="edit-form__title">Редактировать профиль</h2>
         <input class="edit-form__input" type="text" name="profile-input-name" required autofocus placeholder="Имя" aria-label="Имя">
         <input class="edit-form__input" type="text" name="profile-input-about" required placeholder="О себе" aria-label="О себе">
-        <button class="edit-form__submit" name="profile-submit" type="submit">Сохранить</button>
+        <button class="button button_type_submit edit-form__submit" name="profile-submit" type="submit">Сохранить</button>
       </form>
     </div>
   </section>

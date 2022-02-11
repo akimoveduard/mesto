@@ -1,6 +1,6 @@
 /* Профиль */
 
-// Поля формы профиля
+// Форма и ее поля
 let formProfile = document.querySelector('[name="profile-form"]');
 let inputProfileName = document.querySelector('[name="profile-input-name"]');
 let inputProfileAbout = document.querySelector('[name="profile-input-about"]');
@@ -10,7 +10,7 @@ let buttonProfileOpen = document.querySelector('[name="profile-button-open"]');
 let buttonProfileClose = document.querySelector('[name="profile-button-close"]');
 let buttonProfileSubmit = document.querySelector('[name="profile-submit"]');
 
-// Слушатели
+// Слушатели для профиля
 buttonProfileOpen.addEventListener('click', function() {
   openPopup('.popup_type_profile');
   pushValueIntoForm(inputProfileName, '.profile__name');
@@ -43,7 +43,7 @@ function getValueFromInput(inputName, element) {
   if (inputName.value) {
     document.querySelector(element).textContent = inputName.value;
   } else {
-    alert('В поле «' + inputName.placeholder + '» нужно написать что-то новое, а пока вспомним, что там уже было');
+    alert('В поле «' + inputName.placeholder + '» нужно написать что-то новое, а пока давайте вспомним, что там уже было.');
   }
 }
 
@@ -61,6 +61,7 @@ function openPopup(element) {
   }
 }
 
+// Закрытие модального окна
 function closePopup(element) {
   objectPopup = document.querySelector(element);
   if (objectPopup.classList.contains('popup_opened')) {

@@ -13,10 +13,6 @@
   right: -20px;
 }
 
-.button_type_close:hover {
-  cursor: pointer;
-}
-
 @media screen and (max-width: 540px) {
   .button_type_close {
     background-size: 20px;

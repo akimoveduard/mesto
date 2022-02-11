@@ -4,7 +4,6 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  transition: .5 ease;
   margin-bottom: 49px;
 }
 
@@ -13,6 +12,5 @@
   .profile {
     flex-direction: column;
     margin-bottom: 36px;
-    transition: .5 ease;
   }
 }
