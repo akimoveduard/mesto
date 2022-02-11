@@ -5,4 +5,5 @@
   justify-content: center;
   width: 100%;
   max-width: calc(430px + 19px + 19px);
+  min-width: 300px;
 }

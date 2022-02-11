@@ -18,52 +18,52 @@
         <div class="profile__title">
           <h1 class="profile__name">Пабло Диего Хосе Франциско де Паула Хуан Непомукено Криспин Криспиано де ла Сантисима Тринидад Руиз Пикассо</h1>
           <!-- <h1 class="profile__name">Жак-Ив Кусто</h1> -->
-          <button class="button button_type_edit" href="#"></button>
+          <button class="button button_type_edit" name="profile-button-open"></button>
         </div>
-        <p class="profile__subtitle">Испанский и французский художник, скульптор, график, театральный художник, керамист и дизайнер</p>
+        <p class="profile__about">Испанский и французский художник, скульптор, график, театральный художник, керамист и дизайнер</p>
         <!-- <p class="profile__subtitle">Исследователь океана</p> -->
       </div>
-      <button class="button button_type_add" href="#"></button>
+      <button class="button button_type_add"></button>
     </section>
     <section class="photo-grid" aria-label="Карточки мест">
       <ul class="photo-grid__list">
         <li class="photo-grid__item">
-          <img class="photo-grid__item-image" src="./images/card-sochi.jpg" alt="На переднем плане деревья, над ними возвышается православный храм и высокое белое здание.">
+          <img class="photo-grid__item-image" src="./images/card-sochi.jpg" alt="На переднем плане деревья, над ними возвышается православный храм и высокое белое здание." loading="lazy">
           <div class="photo-grid__item-info">
             <p class="photo-grid__item-caption">Сочи</p>
             <a class="photo-grid__button-like" href="#"></a>
           </div>
         </li>
         <li class="photo-grid__item">
-          <img class="photo-grid__item-image" src="./images/card-ulyanovsk.jpg" alt="Осенний берег Волги, обравленный зелеными и желтыми деревьями. На горизонте высокие холмы, на них в дымке угадываются городские очертания.">
+          <img class="photo-grid__item-image" src="./images/card-ulyanovsk.jpg" alt="Осенний берег Волги, обравленный зелеными и желтыми деревьями. На горизонте высокие холмы, на них в дымке угадываются городские очертания." loading="lazy">
           <div class="photo-grid__item-info">
             <p class="photo-grid__item-caption">Ульяновск</p>
             <a class="photo-grid__button-like" href="#"></a>
           </div>
         </li>
         <li class="photo-grid__item">
-          <img class="photo-grid__item-image" src="./images/card-kazan.jpg" alt="Справа, уходят вдаль белые стены казанского кремля; рядом с ними вьется дорога.">
+          <img class="photo-grid__item-image" src="./images/card-kazan.jpg" alt="Справа, уходят вдаль белые стены казанского кремля; рядом с ними вьется дорога." loading="lazy">
           <div class="photo-grid__item-info">
             <p class="photo-grid__item-caption">Казань</p>
             <a class="photo-grid__button-like" href="#"></a>
           </div>
         </li>
         <li class="photo-grid__item">
-          <img class="photo-grid__item-image" src="./images/card-krasnodar.jpg" alt="На переднем плане кирпичная серая гостиница, окруженная деревьями; дальше видны высотки-новостройки под облачным ярким небом.">
+          <img class="photo-grid__item-image" src="./images/card-krasnodar.jpg" alt="На переднем плане кирпичная серая гостиница, окруженная деревьями; дальше видны высотки-новостройки под облачным ярким небом." loading="lazy">
           <div class="photo-grid__item-info">
             <p class="photo-grid__item-caption">Краснодар</p>
             <a class="photo-grid__button-like" href="#"></a>
           </div>
         </li>
         <li class="photo-grid__item">
-          <img class="photo-grid__item-image" src="./images/card-moskva.jpg" alt="Красная площадь зимой. Вечер. Справа ЦУМ, оконтуренный огнями.">
+          <img class="photo-grid__item-image" src="./images/card-moskva.jpg" alt="Красная площадь зимой. Вечер. Справа ЦУМ, оконтуренный огнями." loading="lazy">
           <div class="photo-grid__item-info">
             <p class="photo-grid__item-caption">Москва</p>
             <a class="photo-grid__button-like" href="#"></a>
           </div>
         </li>
         <li class="photo-grid__item">
-          <img class="photo-grid__item-image" src="./images/card-astral.jpg" alt="Ничего не понятно, но очень интересно.">
+          <img class="photo-grid__item-image" src="./images/card-astral.jpg" alt="Ничего не понятно, но очень интересно." loading="lazy">
           <div class="photo-grid__item-info">
             <p class="photo-grid__item-caption">село Астральное</p>
             <a class="photo-grid__button-like" href="#"></a>
@@ -76,18 +76,17 @@
     <p class="footer__copyright">&copy;&nbsp;2020 Mesto Russia</p>
   </footer>
   <!-- Модальное окно с формой-->
-  <!--
-  <section class="popup" aria-label="Форма редактирования">
+  <section class="popup popup_type_profile" aria-label="Форма редактирования">
     <div class="popup__wrapper">
-      <button class="button button_type_close"></button>
-      <form class="edit-form" action="" method="get">
+      <button class="button button_type_close" name="profile-button-close"></button>
+      <form class="edit-form" name="profile-form" method="get">
         <h2 class="edit-form__title">Редактировать профиль</h2>
-        <input class="edit-form__input" type="text" name="edit-form-name" required autofocus aria-label="Имя">
-        <input class="edit-form__input" type="text" name="edit-form-credo" required autofocus aria-label="Призвание">
-        <button class="edit-form__submit" name="edit-form-submit" type="submit">Сохранить</button>
+        <input class="edit-form__input" type="text" name="profile-input-name" required autofocus placeholder="Имя" aria-label="Имя">
+        <input class="edit-form__input" type="text" name="profile-input-about" required placeholder="О себе" aria-label="О себе">
+        <button class="edit-form__submit" name="profile-submit" type="submit">Сохранить</button>
       </form>
     </div>
-  </section> -->
+  </section>
   <script src="./js/index.js"></script>
 </body>
 </html>

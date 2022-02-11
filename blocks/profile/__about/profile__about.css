@@ -1,4 +1,4 @@
-.profile__subtitle {
+.profile__about {
   box-sizing: border-box;
   font-size: 18px;
   line-height: 22px;
@@ -11,13 +11,13 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .profile__subtitle {
+  .profile__about {
     font-size: 14px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  .profile__subtitle {
+  .profile__about {
     text-align: center;
     font-size: 14px;
     line-height: 17px;
