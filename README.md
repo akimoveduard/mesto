@@ -18,4 +18,3 @@
 ---
 
 [Результат на GitHubPages](https://akimoveduard.github.io/mesto/)
-**Figma**
