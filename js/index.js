@@ -1,3 +1,11 @@
+/* Модальное окно */
+let buttonPopupClose = document.querySelector('[name="popup-button-close"]');
+
+// Слушатели модального окна
+buttonPopupClose.addEventListener('click', function() {
+  closePopup('.popup_type_profile');
+});
+
 /* Профиль */
 
 // Форма и ее поля
@@ -7,8 +15,7 @@ let inputProfileAbout = document.querySelector('[name="profile-input-about"]');
 
 // Кнопки
 let buttonProfileOpen = document.querySelector('[name="profile-button-open"]');
-let buttonProfileClose = document.querySelector('[name="profile-button-close"]');
-let buttonProfileSubmit = document.querySelector('[name="profile-submit"]');
+let buttonProfileSubmit = document.querySelector('[name="profile-form"]');
 
 // Слушатели для профиля
 buttonProfileOpen.addEventListener('click', function() {
@@ -17,11 +24,7 @@ buttonProfileOpen.addEventListener('click', function() {
   pushValueIntoForm(inputProfileAbout, '.profile__about');
 });
 
-buttonProfileClose.addEventListener('click', function() {
-  closePopup('.popup_type_profile');
-});
-
-buttonProfileSubmit.addEventListener('click', formSubmitHandler);
+buttonProfileSubmit.addEventListener('submit', formSubmitHandler);
 
 /* Функции */
 
@@ -66,6 +69,5 @@ function closePopup(element) {
   objectPopup = document.querySelector(element);
   if (objectPopup.classList.contains('popup_opened')) {
     objectPopup.classList.remove('popup_opened');
-    document.removeEventListener('keydown', eventKeydownEsc);
   }
 }

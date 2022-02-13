@@ -1,9 +1,6 @@
 .edit-form {
   box-sizing: content-box;
-  border-radius: 10px;
   max-width: 100%;
-  margin: 0 19px;
-  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

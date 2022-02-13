@@ -4,12 +4,13 @@
   min-width: 150px;
   min-height: 50px;
   border: 2px solid #ffffff;
-  background-color: #000000;
+  background-color: transparent;
   background-image: url(../../../../images/icon-plus.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 22px;
   margin-left: auto;
+  border-radius: 2px;
 }
 
 @media screen and (max-width: 767px) {

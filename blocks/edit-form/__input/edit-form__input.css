@@ -1,14 +1,14 @@
 .edit-form__input {
   border: 0;
   border-bottom: 1px solid rgba(0,0,0,20%);
-  margin: 26px 36px 0 36px;
-  padding: 0 0 7px 0;
+  margin-top: 26px;
+  padding: 0px 0 7px 0;
   font-size: 14px;
   line-height: 17px;
 }
 
 .edit-form__input:last-of-type {
-  margin-bottom: 53px;
+  margin-bottom: 56px;
 }
 
 .edit-form__input:focus {
@@ -17,6 +17,10 @@
 
 @media screen and (max-width: 425px) {
   .edit-form__input {
-    margin: 30px 22px 0 22px;
+    margin-top: 30px;
+  }
+
+  .edit-form__input:last-of-type {
+    margin-bottom: 50px;
   }
 }
