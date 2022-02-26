@@ -51,44 +51,46 @@ const inputAddnewImage = document.querySelector('[name="addnew-input-image"]');
 /* СЛУШАТЕЛИ */
 
 // Профиль
-buttonProfileOpen.addEventListener('click', function() {
+buttonProfileOpen.addEventListener('click', () => {
   openPopup('.popup_type_profile');
   inputProfileName.value = document.querySelector('.profile__name').textContent;
   inputProfileAbout.value = document.querySelector('.profile__about').textContent;
 });
 
-buttonProfileClose.addEventListener('click', function() {
+buttonProfileClose.addEventListener('click', () => {
   closePopup('.popup_type_profile');
 });
 
-formProfile.addEventListener('submit', function(evt) {
-  evt.preventDefault();
+formProfile.addEventListener('submit', (event) => {
+  event.preventDefault();
   if (inputProfileName) { document.querySelector('.profile__name').textContent = inputProfileName.value; }
   if (inputProfileAbout) { document.querySelector('.profile__about').textContent = inputProfileAbout.value; }
   closePopup('.popup_type_profile');
 });
 
 // Добавление места
-buttonAddnewOpen.addEventListener('click', function() {
+buttonAddnewOpen.addEventListener('click', () => {
   openPopup('.popup_type_addnew');
 });
 
-buttonAddnewClose.addEventListener('click', function() {
+buttonAddnewClose.addEventListener('click', () => {
   closePopup('.popup_type_addnew');
 });
 
-formAddnew.addEventListener('submit', function(evt) {
-  evt.preventDefault();
+formAddnew.addEventListener('submit', (event)=> {
+  event.preventDefault();
   const newPlace = {
     name: inputAddnewCaption.value,
     link: inputAddnewImage.value
   };
-  makePlace(newPlace);
+  renderPlace(newPlace);
   closePopup('.popup_type_addnew');
 });
 
-/* ЛОГИКА */
-initialCards.forEach(makePlace);
+function setEventListeners(itemElement) {
+  itemElement.querySelector('.button_type_delete').addEventListener('click', removePlace);
+  itemElement.querySelector('.button_type_like').addEventListener('click', likePlace);
+}
 
 /* ФУНКЦИИ */
 
@@ -114,10 +116,26 @@ function closePopup(element) {
   }
 }
 
-// Создание новой карточки места
-function makePlace(element) {
-  const photoElement = photoTemplate.querySelector('.photo-grid__item').cloneNode(true);
-  photoElement.querySelector('.photo-grid__item-image').src = element.link;
-  photoElement.querySelector('.photo-grid__item-caption').textContent = element.name;
-  photoGrid.append(photoElement);
+// Создание новой карточки
+function renderPlace(element) {
+  const itemElement = photoTemplate.querySelector('.photo-grid__item').cloneNode(true);
+  itemElement.querySelector('.photo-grid__item-image').src = element.link;
+  itemElement.querySelector('.photo-grid__item-caption').textContent = element.name;
+  setEventListeners(itemElement);
+  photoGrid.append(itemElement);
 }
+
+// Удаление карточки
+function removePlace(event) {
+  const itemElement = event.target.closest(".photo-grid__item");
+  itemElement.remove();
+}
+
+// Лайк карточки
+function likePlace(event) {
+  const itemElement = event.target;
+  itemElement.classList.toggle('button_type_liked');
+}
+
+/* ЛОГИКА */
+initialCards.forEach(renderPlace);
