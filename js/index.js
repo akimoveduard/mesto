@@ -45,6 +45,9 @@ const formAddnew = document.querySelector('[name="addnew-form"]');
 const buttonAddnewOpen = document.querySelector('[name="addnew-button-open"]');
 const buttonAddnewClose = document.querySelector('[name="addnew-button-close"]');
 
+const inputAddnewCaption = document.querySelector('[name="addnew-input-caption"]');
+const inputAddnewImage = document.querySelector('[name="addnew-input-image"]');
+
 /* СЛУШАТЕЛИ */
 
 // Профиль
@@ -77,8 +80,8 @@ buttonAddnewClose.addEventListener('click', function() {
 formAddnew.addEventListener('submit', function(evt) {
   evt.preventDefault();
   const newPlace = {
-    name: '2',
-    link: '222'
+    name: inputAddnewCaption.value,
+    link: inputAddnewImage.value
   };
   makePlace(newPlace);
   closePopup('.popup_type_addnew');
@@ -113,7 +116,6 @@ function closePopup(element) {
 
 // Создание новой карточки места
 function makePlace(element) {
-  console.log(element);
   const photoElement = photoTemplate.querySelector('.photo-grid__item').cloneNode(true);
   photoElement.querySelector('.photo-grid__item-image').src = element.link;
   photoElement.querySelector('.photo-grid__item-caption').textContent = element.name;
