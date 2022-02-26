@@ -1,7 +1,7 @@
 .photo-grid__item-image {
   display: block;
   box-sizing: border-box;
-  max-width: 282px;
-  max-height: 282px;
+  width: 282px;
+  height: 282px;
   object-fit: cover;
 }

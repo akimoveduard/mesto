@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
   <title>Место Россия</title>
   <link rel="stylesheet" href="./pages/index.css">
 </head>
+
 <body class="page">
   <header class="header">
     <img class="logo" src="./images/logo.svg" alt="Логотип Mesto Russia">
@@ -16,75 +18,61 @@
       <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватар пользователя">
       <div class="profile__info">
         <div class="profile__title">
-          <h1 class="profile__name">Пабло Диего Хосе Франциско де Паула Хуан Непомукено Криспин Криспиано де ла Сантисима Тринидад Руиз Пикассо</h1>
+          <h1 class="profile__name">Пабло Диего Хосе Франциско де Паула Хуан Непомукено Криспин Криспиано де ла
+            Сантисима Тринидад Руиз Пикассо</h1>
           <button class="button button_type_edit" name="profile-button-open" type="button"></button>
         </div>
-        <p class="profile__about">Испанский и французский художник, скульптор, график, театральный художник, керамист и дизайнер</p>
+        <p class="profile__about">Испанский и французский художник, скульптор, график, театральный художник, керамист и
+          дизайнер</p>
       </div>
-      <button class="button button_type_add" type="button"></button>
+      <button class="button button_type_add" name="addnew-button-open" type="button"></button>
     </section>
     <section class="photo-grid" aria-label="Карточки мест">
       <ul class="photo-grid__list">
-        <li class="photo-grid__item">
-          <img class="photo-grid__item-image" src="./images/card-sochi.jpg" alt="На переднем плане деревья, над ними возвышается православный храм и высокое белое здание." loading="lazy">
-          <div class="photo-grid__item-info">
-            <h2 class="photo-grid__item-caption">Сочи</h2>
-            <button class="button button_type_like" type="button"></button>
-          </div>
-        </li>
-        <li class="photo-grid__item">
-          <img class="photo-grid__item-image" src="./images/card-ulyanovsk.jpg" alt="Осенний берег Волги, обравленный зелеными и желтыми деревьями. На горизонте высокие холмы, на них в дымке угадываются городские очертания." loading="lazy">
-          <div class="photo-grid__item-info">
-            <h2 class="photo-grid__item-caption">Ульяновск</h2>
-            <button class="button button_type_like" type="button"></button>
-          </div>
-        </li>
-        <li class="photo-grid__item">
-          <img class="photo-grid__item-image" src="./images/card-kazan.jpg" alt="Справа, уходят вдаль белые стены казанского кремля; рядом с ними вьется дорога." loading="lazy">
-          <div class="photo-grid__item-info">
-            <h2 class="photo-grid__item-caption">Казань</h2>
-            <button class="button button_type_like" type="button"></button>
-          </div>
-        </li>
-        <li class="photo-grid__item">
-          <img class="photo-grid__item-image" src="./images/card-krasnodar.jpg" alt="На переднем плане кирпичная серая гостиница, окруженная деревьями; дальше видны высотки-новостройки под облачным ярким небом." loading="lazy">
-          <div class="photo-grid__item-info">
-            <h2 class="photo-grid__item-caption">Краснодар</h2>
-            <button class="button button_type_like" type="button"></button>
-          </div>
-        </li>
-        <li class="photo-grid__item">
-          <img class="photo-grid__item-image" src="./images/card-moskva.jpg" alt="Красная площадь зимой. Вечер. Справа ЦУМ, оконтуренный огнями." loading="lazy">
-          <div class="photo-grid__item-info">
-            <h2 class="photo-grid__item-caption">Москва</h2>
-            <button class="button button_type_like" type="button"></button>
-          </div>
-        </li>
-        <li class="photo-grid__item">
-          <img class="photo-grid__item-image" src="./images/card-astral.jpg" alt="Ничего не понятно, но очень интересно." loading="lazy">
-          <div class="photo-grid__item-info">
-            <h2 class="photo-grid__item-caption">село Астральное</h2>
-            <button class="button button_type_like" type="button"></button>
-          </div>
-        </li>
       </ul>
     </section>
   </div>
   <footer class="footer">
     <p class="footer__copyright">&copy;&nbsp;2020 Mesto Russia</p>
   </footer>
-  <!-- Модальное окно с формой профиля -->
+  <!-- Модальное окно профиля -->
   <section class="popup popup_type_profile" aria-label="Форма редактирования">
     <div class="popup__wrapper">
-      <button class="button button_type_close" name="popup-button-close" type="button"></button>
+      <button class="button button_type_close" name="button-close-profile" type="button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="edit-form" name="profile-form" method="get">
-        <input class="edit-form__input" type="text" name="profile-input-name" required autofocus placeholder="Имя" aria-label="Имя">
-        <input class="edit-form__input" type="text" name="profile-input-about" required placeholder="О себе" aria-label="О себе">
-        <button class="button button_type_submit edit-form__submit" name="profile-submit" type="submit">Сохранить</button>
+        <input class="edit-form__input" type="text" name="profile-input-name" required autofocus placeholder="Имя"
+          aria-label="Имя">
+        <input class="edit-form__input" type="text" name="profile-input-about" required placeholder="О себе"
+          aria-label="О себе">
+        <button class="button button_type_submit" name="profile-submit"
+          type="submit">Сохранить</button>
       </form>
     </div>
   </section>
+  <!-- Модальное окно добавления места -->
+  <section class="popup popup_type_addnew" aria-label="Форма добавления места">
+    <div class="popup__wrapper">
+      <button class="button button_type_close" name="addnew-button-close" type="button"></button>
+      <h2>Новое место</h2>
+      <form class="edit-form" name="addnew-form" method="get">
+        <input class="edit-form__input" type="text" name="addnew-input-caption" required autofocus placeholder="Название" aria-label="Название места">
+        <input class="edit-form__input" type="text" name="addnew-input-src" required placeholder="Ссылка на картинку" aria-label="Ссылка на картинку">
+        <button class="button button_type_submit" name="addnew-submit" type="submit">Создать</button>
+      </form>
+    </div>
+  </section>
+  <!-- Шаблон карточки места -->
+  <template id="photo-grid-item-template">
+    <li class="photo-grid__item">
+      <button class="button button_type_delete" type="button"></button>
+      <img class="photo-grid__item-image" loading="lazy">
+      <div class="photo-grid__item-info">
+        <h2 class="photo-grid__item-caption"></h2>
+        <button class="button button_type_like" type="button"></button>
+      </div>
+    </li>
+  </template>
   <script src="./js/index.js"></script>
 </body>
 </html>

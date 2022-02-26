@@ -1,56 +1,95 @@
-/* Модальное окно */
-let buttonPopupClose = document.querySelector('[name="popup-button-close"]');
+/* ПЕРЕМЕННЫЕ */
 
-// Слушатели модального окна
-buttonPopupClose.addEventListener('click', function() {
-  closePopup('.popup_type_profile');
-});
+// Карточки мест по умолчанию
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
 
-/* Профиль */
+// template
+const photoTemplate = document.querySelector('#photo-grid-item-template').content;
+const photoGrid = document.querySelector('.photo-grid__list');
 
-// Форма и ее поля
-let formProfile = document.querySelector('[name="profile-form"]');
-let inputProfileName = document.querySelector('[name="profile-input-name"]');
-let inputProfileAbout = document.querySelector('[name="profile-input-about"]');
+// Профиль
+const buttonProfileOpen = document.querySelector('[name="profile-button-open"]');
+const buttonProfileClose = document.querySelector('[name="button-close-profile"]');
 
-// Кнопки
-let buttonProfileOpen = document.querySelector('[name="profile-button-open"]');
-let buttonProfileSubmit = document.querySelector('[name="profile-form"]');
+const formProfile = document.querySelector('[name="profile-form"]');
+const inputProfileName = document.querySelector('[name="profile-input-name"]');
+const inputProfileAbout = document.querySelector('[name="profile-input-about"]');
 
-// Слушатели для профиля
+// Добавить место
+const formAddnew = document.querySelector('[name="addnew-form"]');
+const buttonAddnewOpen = document.querySelector('[name="addnew-button-open"]');
+const buttonAddnewClose = document.querySelector('[name="addnew-button-close"]');
+
+/* СЛУШАТЕЛИ */
+
+// Профиль
 buttonProfileOpen.addEventListener('click', function() {
   openPopup('.popup_type_profile');
-  pushValueIntoForm(inputProfileName, '.profile__name');
-  pushValueIntoForm(inputProfileAbout, '.profile__about');
+  inputProfileName.value = document.querySelector('.profile__name').textContent;
+  inputProfileAbout.value = document.querySelector('.profile__about').textContent;
 });
 
-buttonProfileSubmit.addEventListener('submit', formSubmitHandler);
-
-/* Функции */
-
-// Обработка формы после нажатия кнопки submit
-function formSubmitHandler(evt) {
-  evt.preventDefault();
-  getValueFromInput(inputProfileName, '.profile__name');
-  getValueFromInput(inputProfileAbout, '.profile__about');
+buttonProfileClose.addEventListener('click', function() {
   closePopup('.popup_type_profile');
-}
+});
 
-// Вставить значение элемента в поле формы
-function pushValueIntoForm(inputName, element) {
-  inputName.value = document.querySelector(element).textContent;
-}
+formProfile.addEventListener('submit', function(evt) {
+  evt.preventDefault();
+  if (inputProfileName) { document.querySelector('.profile__name').textContent = inputProfileName.value; }
+  if (inputProfileAbout) { document.querySelector('.profile__about').textContent = inputProfileAbout.value; }
+  closePopup('.popup_type_profile');
+});
 
-// Получить значение поля формы и вставить в содержимое элемента
-function getValueFromInput(inputName, element) {
-  if (inputName.value) {
-    document.querySelector(element).textContent = inputName.value;
-  } else {
-    alert('В поле «' + inputName.placeholder + '» нужно написать что-то новое, а пока давайте вспомним, что там уже было.');
-  }
-}
+// Добавление места
+buttonAddnewOpen.addEventListener('click', function() {
+  openPopup('.popup_type_addnew');
+});
 
-// Открытие модального окна
+buttonAddnewClose.addEventListener('click', function() {
+  closePopup('.popup_type_addnew');
+});
+
+formAddnew.addEventListener('submit', function(evt) {
+  evt.preventDefault();
+  const newPlace = {
+    name: '2',
+    link: '222'
+  };
+  makePlace(newPlace);
+  closePopup('.popup_type_addnew');
+});
+
+/* ЛОГИКА */
+initialCards.forEach(makePlace);
+
+/* ФУНКЦИИ */
+
+// Открытие всплывающего окна
 function openPopup(element) {
   objectPopup = document.querySelector(element);
   if (!objectPopup.classList.contains('popup_opened')) {
@@ -64,10 +103,19 @@ function openPopup(element) {
   }
 }
 
-// Закрытие модального окна
+// Закрытие всплывающего окна
 function closePopup(element) {
   objectPopup = document.querySelector(element);
   if (objectPopup.classList.contains('popup_opened')) {
     objectPopup.classList.remove('popup_opened');
   }
+}
+
+// Создание новой карточки места
+function makePlace(element) {
+  console.log(element);
+  const photoElement = photoTemplate.querySelector('.photo-grid__item').cloneNode(true);
+  photoElement.querySelector('.photo-grid__item-image').src = element.link;
+  photoElement.querySelector('.photo-grid__item-caption').textContent = element.name;
+  photoGrid.append(photoElement);
 }
