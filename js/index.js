@@ -58,8 +58,8 @@ const buttonMestoClose = document.querySelector('[name="button-close-mesto"]');
 
 // Установки разных слушателей
 function setEventListeners(itemElement) {
-  itemElement.querySelector('.button_type_delete').addEventListener('click', removePlace);
-  itemElement.querySelector('.button_type_like').addEventListener('click', likePlace);
+  itemElement.querySelector('.button_type_delete').addEventListener('click', removeMesto);
+  itemElement.querySelector('.button_type_like').addEventListener('click', likeMesto);
   itemElement.querySelector('.photo-grid__item-image').addEventListener('click', showMesto);
 }
 
@@ -89,22 +89,23 @@ function closePopup(element) {
 }
 
 // Создание новой карточки
-function renderPlace(element) {
+function renderMesto(element) {
   const itemElement = photoTemplate.querySelector('.photo-grid__item').cloneNode(true);
   itemElement.querySelector('.photo-grid__item-image').src = element.link;
+  itemElement.querySelector('.photo-grid__item-image').alt = element.name;
   itemElement.querySelector('.photo-grid__item-caption').textContent = element.name;
   setEventListeners(itemElement);
   photoGrid.prepend(itemElement);
 }
 
 // Удаление карточки
-function removePlace(event) {
+function removeMesto(event) {
   const itemElement = event.target.closest(".photo-grid__item");
   itemElement.remove();
 }
 
 // Лайк карточки
-function likePlace(event) {
+function likeMesto(event) {
   const itemElement = event.target;
   itemElement.classList.toggle('button_type_liked');
 }
@@ -166,4 +167,4 @@ formAddnew.addEventListener('submit', (event)=> {
 buttonMestoClose.addEventListener('click', closeMesto);
 
 /* ЛОГИКА */
-initialCards.forEach(renderPlace);
+initialCards.forEach(renderMesto);
