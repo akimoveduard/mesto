@@ -1,0 +1,10 @@
+.mesto__figure {
+  padding: 0;
+  margin: 0;
+}
+
+@media screen and (max-width: 425px) {
+  .mesto__figure {
+    margin: 0 21px;
+  }
+}

@@ -38,8 +38,14 @@
 
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/_type/popup_type_mesto.css);
 @import url(../blocks/popup/__wrapper/popup__wrapper.css);
 @import url(../blocks/popup/__title/popup__title.css);
 
 @import url(../blocks/edit-form/edit-form.css);
 @import url(../blocks/edit-form/__input/edit-form__input.css);
+
+@import url(../blocks/mesto/mesto.css);
+@import url(../blocks/mesto/__figure/mesto__figure.css);
+@import url(../blocks/mesto/__image/mesto__image.css);
+@import url(../blocks/mesto/__caption/mesto__caption.css);

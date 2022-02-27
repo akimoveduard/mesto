@@ -62,16 +62,29 @@
       </form>
     </div>
   </section>
+  <!-- Модальное окно с фотографией -->
+  <section class="popup popup_type_mesto" aria-label="Фото места">
+    <div class="mesto">
+      <button class="button button_type_close" name="button-close-mesto" type="button"></button>
+    </div>
+  </section>
   <!-- Шаблон карточки места -->
   <template id="photo-grid-item-template">
     <li class="photo-grid__item">
       <button class="button button_type_delete" type="button"></button>
-      <img class="photo-grid__item-image" loading="lazy">
+      <img class="photo-grid__item-image">
       <div class="photo-grid__item-info">
         <h2 class="photo-grid__item-caption"></h2>
         <button class="button button_type_like" type="button"></button>
       </div>
     </li>
+  </template>
+  <!-- Шаблон модального окна места -->
+  <template id="mesto-template">
+    <figure class="mesto__figure">
+      <img class="mesto__image">
+      <figcaption class="mesto__caption"></figcaption>
+    </figure>
   </template>
   <script src="./js/index.js"></script>
 </body>
