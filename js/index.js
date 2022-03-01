@@ -1,5 +1,10 @@
 /* ПЕРЕМЕННЫЕ */
 
+// Модальные окна
+const popupProfile = document.querySelector('.popup_type_profile');
+const popupAddnew = document.querySelector('.popup_type_addnew');
+const popupMesto = document.querySelector('.popup_type_mesto');
+
 // Профиль
 const buttonProfileOpen = document.querySelector('[name="profile-button-open"]');
 const buttonProfileClose = document.querySelector('[name="button-close-profile"]');
@@ -34,19 +39,18 @@ function setCardEventListeners(itemElement) {
   itemElement.querySelector('.button_type_delete').addEventListener('click', removeMesto);
   itemElement.querySelector('.button_type_like').addEventListener('click', likeMesto);
   itemElement.querySelector('.photo-grid__item-image').addEventListener('click', () => {
-    createPopupMesto(itemElement);
-    openPopup('.popup_type_mesto');
+    openPopupMesto(itemElement);
   });
 }
 
 // Открытие всплывающего окна
-function openPopup(element) {
-  document.querySelector(element).classList.add('popup_opened');
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
 }
 
 // Закрытие всплывающего окна
-function closePopup(element) {
-  document.querySelector(element).classList.remove('popup_opened');
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
 }
 
 // Получение значений из HTML-элементов для формы профиля
@@ -87,11 +91,12 @@ function likeMesto(event) {
 }
 
 // Подготовка модального окна с местом
-function createPopupMesto(itemElement) {
+function openPopupMesto(itemElement) {
   itemImage = itemElement.querySelector('.photo-grid__item-image');
   mestoImage.src = itemImage.src;
   mestoImage.alt = itemImage.alt;
   mestoCaption.textContent = itemElement.querySelector('.photo-grid__item-caption').textContent;
+  openPopup(popupMesto);
 }
 
 /* СЛУШАТЕЛИ */
@@ -99,30 +104,30 @@ function createPopupMesto(itemElement) {
 // Открытие модального окна профиля
 buttonProfileOpen.addEventListener('click', () => {
   getProfileValues();
-  openPopup('.popup_type_profile');
+  openPopup(popupProfile);
 });
 
 
 // Закрытие модального окна профиля
 buttonProfileClose.addEventListener('click', () => {
-  closePopup('.popup_type_profile');
+  closePopup(popupProfile);
 });
 
 // Обработка ввода данных формы профиля
 formProfile.addEventListener('submit', (event) => {
   event.preventDefault();
   setProfileValues();
-  closePopup('.popup_type_profile');
+  closePopup(popupProfile);
 });
 
 // Открытие модального окна формы нового места
 buttonAddnewOpen.addEventListener('click', () => {
-  openPopup('.popup_type_addnew');
+  openPopup(popupAddnew);
 });
 
 // Закрытие модального окна нового места
 buttonAddnewClose.addEventListener('click', () => {
-  closePopup('.popup_type_addnew');
+  closePopup(popupAddnew);
 });
 
 // Обработка ввода данных формы места
@@ -134,12 +139,12 @@ formAddnew.addEventListener('submit', (event)=> {
   };
   const newCard = createCard(newMesto.link, newMesto.name);
   mestoGrid.prepend(newCard);
-  closePopup('.popup_type_addnew');
+  closePopup(popupAddnew);
 });
 
 // Закрытие модального окна места
 buttonMestoClose.addEventListener('click', () => {
-  closePopup('.popup_type_mesto');
+  closePopup(popupMesto);
 });
 
 /* ЛОГИКА */
