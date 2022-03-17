@@ -2,21 +2,24 @@
   background-color: #000000;
   color: #ffffff;
   border: 0;
+  border-radius: 2px;
   font-size: 18px;
   line-height: 22px;
   text-align: center;
   padding: 14px 10px;
   margin-bottom: 37px;
+  margin-top: 56px;
 }
 
 .button_type_submit:hover {
-  opacity: .8;
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 425px) {
   .button_type_submit {
     font-size: 14px;
     line-height: 17px;
+    margin-top: 50px;
     margin-bottom: 25px;
   }
 }

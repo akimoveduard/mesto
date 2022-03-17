@@ -23,7 +23,7 @@
         </div>
         <p class="profile__about">Художник, скульптор, график</p>
       </div>
-      <button class="button button_type_add" name="addnew-button-open" type="button"></button>
+      <button class="button button_type_add" name="addmesto-button-open" type="button"></button>
     </section>
     <section class="photo-grid" aria-label="Карточки мест">
       <ul class="photo-grid__list">
@@ -36,14 +36,20 @@
   <!-- Модальное окно профиля -->
   <section class="popup popup_type_profile" aria-label="Форма редактирования">
     <div class="popup__wrapper">
-      <button class="button button_type_close" name="button-close-profile" type="button"></button>
+      <button class="popup__close" type="button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="edit-form" name="profile-form" method="get" novalidate>
-        <input class="edit-form__input" type="text" name="profile-input-name" required autofocus placeholder="Имя"
-          aria-label="Имя" minlength="2" maxlength="40">
-        <input class="edit-form__input" type="text" name="profile-input-about" required placeholder="О себе"
-          aria-label="О себе" minlength="2" maxlength="200">
-        <button class="button button_type_submit" name="profile-submit"
+      <form class="form popup__form" name="profile" method="get" novalidate>
+        <section class="form__section">
+          <input class="popup__input" type="text" name="name" required autofocus placeholder="Имя"
+          aria-label="Имя" minlength="2" maxlength="40" autocomplete="off">
+          <span class="popup__error name-input-error"></span>
+        </section>
+        <section class="form__section">
+          <input class="popup__input" type="text" name="about" required placeholder="О себе"
+            aria-label="О себе" minlength="2" maxlength="200" autocomplete="off">
+          <span class="popup__error about-input-error"></span>
+        </section>
+        <button class="button button_type_submit popup__button" name="profile-submit"
           type="submit">Сохранить</button>
       </form>
     </div>
@@ -51,19 +57,25 @@
   <!-- Модальное окно добавления места -->
   <section class="popup popup_type_addnew" aria-label="Форма добавления места">
     <div class="popup__wrapper">
-      <button class="button button_type_close" name="addnew-button-close" type="button"></button>
+      <button class="popup__close" type="button"></button>
       <h2>Новое место</h2>
-      <form class="edit-form" name="addnew-form" method="get" novalidate>
-        <input class="edit-form__input" type="text" name="addnew-input-caption" required minlength="2" maxlength="30" autofocus placeholder="Название" aria-label="Название места">
-        <input class="edit-form__input" type="url" name="addnew-input-image" required placeholder="Ссылка на картинку" aria-label="Ссылка на картинку">
-        <button class="button button_type_submit" name="addnew-submit" type="submit">Создать</button>
+      <form class="form popup__form" name="addmesto" method="get" novalidate>
+        <section class="form__section">
+          <input class="popup__input" type="text" name="caption" required minlength="2" maxlength="30" autofocus placeholder="Название" aria-label="Название места" autocomplete="off">
+          <span class="popup__error caption-input-error"></span>
+        </section>
+        <section class="form__section">
+          <input class="popup__input" type="url" name="image" required placeholder="Ссылка на картинку" aria-label="Ссылка на картинку" autocomplete="off">
+          <span class="popup__error image-input-error"></span>
+        </section>
+        <button class="button button_type_submit popup__button" name="addmesto-submit" type="submit">Создать</button>
       </form>
     </div>
   </section>
   <!-- Модальное окно места -->
   <section class="popup popup_type_mesto" aria-label="Фото места">
     <div class="mesto">
-      <button class="button button_type_close" name="button-close-mesto" type="button"></button>
+      <button class="popup__close" type="button"></button>
       <figure class="mesto__figure">
         <img class="mesto__image">
         <figcaption class="mesto__caption"></figcaption>
@@ -83,6 +95,6 @@
   </template>
   <script src="./js/constants.js"></script>
   <script src="./js/index.js"></script>
-  <script src="./"></script>
+  <script src="./js/validate.js"></script>
 </body>
 </html>

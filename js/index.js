@@ -7,21 +7,20 @@ const popupMesto = document.querySelector('.popup_type_mesto');
 
 // Профиль
 const buttonProfileOpen = document.querySelector('[name="profile-button-open"]');
-const buttonProfileClose = document.querySelector('[name="button-close-profile"]');
 
 const elementProfileName = document.querySelector('.profile__name');
 const elementProfileAbout = document.querySelector('.profile__about');
-const formProfile = document.querySelector('[name="profile-form"]');
-const inputProfileName = document.querySelector('[name="profile-input-name"]');
-const inputProfileAbout = document.querySelector('[name="profile-input-about"]');
+
+const formProfile = document.querySelector('[name="profile"]');
+const inputProfileName = document.querySelector('[name="name"]');
+const inputProfileAbout = document.querySelector('[name="about"]');
 
 // Добавить место
-const formAddnew = document.querySelector('[name="addnew-form"]');
-const buttonAddnewOpen = document.querySelector('[name="addnew-button-open"]');
-const buttonAddnewClose = document.querySelector('[name="addnew-button-close"]');
+const formAddnew = document.querySelector('[name="addmesto"]');
+const buttonAddnewOpen = document.querySelector('[name="addmesto-button-open"]');
 
-const inputAddnewCaption = document.querySelector('[name="addnew-input-caption"]');
-const inputAddnewImage = document.querySelector('[name="addnew-input-image"]');
+const inputAddnewCaption = document.querySelector('[name="caption"]');
+const inputAddnewImage = document.querySelector('[name="image"]');
 
 // Место
 const mestoGrid = document.querySelector('.photo-grid__list');
@@ -29,8 +28,6 @@ const mestoGrid = document.querySelector('.photo-grid__list');
 // Модальное окно места
 const mestoImage = document.querySelector('.mesto__image');
 const mestoCaption = document.querySelector('.mesto__caption');
-
-const buttonMestoClose = document.querySelector('[name="button-close-mesto"]');
 
 /* ФУНКЦИИ */
 
@@ -46,11 +43,35 @@ function setCardEventListeners(itemElement) {
 // Открытие всплывающего окна
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupByEsc);
 }
 
 // Закрытие всплывающего окна
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupByEsc);
+}
+
+// Закрытие всплывающего окна при нажатии на Esc
+function closePopupByEsc(event) {
+  if (event.key==="Escape") {
+    closePopup(document.querySelector('.popup_opened'));
+  }
+}
+
+// Закрытие любого всплывающего окна при нажатии на оверлей или крестик
+function setPopupCloseListeners() {
+  popups = document.querySelectorAll('.popup');
+  popups.forEach((popup) => {
+    popup.addEventListener('mousedown', (event) => {
+      if (event.target.classList.contains('popup_opened')) {
+        closePopup(popup);
+      }
+      if (event.target.classList.contains('popup__close')) {
+        closePopup(popup);
+      }
+    });
+  });
 }
 
 // Получение значений из HTML-элементов для формы профиля
@@ -60,7 +81,7 @@ function getProfileValues() {
 }
 
 // Установка новых значений из формы профиля в HTML-элементы
-function setProfileValues () {
+function setProfileValues() {
   if (inputProfileName) { elementProfileName.textContent = inputProfileName.value; }
   if (inputProfileAbout) { elementProfileAbout.textContent = inputProfileAbout.value; }
 }
@@ -107,15 +128,8 @@ buttonProfileOpen.addEventListener('click', () => {
   openPopup(popupProfile);
 });
 
-
-// Закрытие модального окна профиля
-buttonProfileClose.addEventListener('click', () => {
-  closePopup(popupProfile);
-});
-
 // Обработка ввода данных формы профиля
 formProfile.addEventListener('submit', (event) => {
-  event.preventDefault();
   setProfileValues();
   closePopup(popupProfile);
 });
@@ -125,14 +139,8 @@ buttonAddnewOpen.addEventListener('click', () => {
   openPopup(popupAddnew);
 });
 
-// Закрытие модального окна нового места
-buttonAddnewClose.addEventListener('click', () => {
-  closePopup(popupAddnew);
-});
-
 // Обработка ввода данных формы места
 formAddnew.addEventListener('submit', (event)=> {
-  event.preventDefault();
   const newMesto = {
     name: inputAddnewCaption.value,
     link: inputAddnewImage.value
@@ -140,11 +148,7 @@ formAddnew.addEventListener('submit', (event)=> {
   const newCard = createCard(newMesto.link, newMesto.name);
   mestoGrid.prepend(newCard);
   closePopup(popupAddnew);
-});
-
-// Закрытие модального окна места
-buttonMestoClose.addEventListener('click', () => {
-  closePopup(popupMesto);
+  event.currentTarget.reset();
 });
 
 /* ЛОГИКА */
@@ -153,3 +157,7 @@ initialCards.forEach(function (item) {
   newCard = createCard(item.link, item.name);
   mestoGrid.append(newCard);
 });
+
+getProfileValues(); // Вставить в инпуты формы профиля заранее, до начала валидации
+
+setPopupCloseListeners(); // Установка слушателей для закрытия всплывающих окон
