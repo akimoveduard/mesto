@@ -108,6 +108,8 @@ const enableValidation = ({
       event.preventDefault();
     };
     formElement.addEventListener("submit", handleFormSubmit);
+    formElement.addEventListener("reset", () =>
+      disableSubmitButton(formElement.querySelector(submitButtonSelector), inactiveButtonClass));
     setEventListeners(
       formElement,
       inputSelector,

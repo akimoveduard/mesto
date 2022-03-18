@@ -47,7 +47,6 @@
 @import url(../blocks/popup/__error/popup__error.css);
 @import url(../blocks/popup/__error/popup__error_visible.css);
 @import url(../blocks/popup/__button/popup__button_disabled.css);
-@import url(../blocks/form/__section/form__section.css);
 
 @import url(../blocks/mesto/mesto.css);
 @import url(../blocks/mesto/__figure/mesto__figure.css);
