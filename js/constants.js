@@ -25,14 +25,13 @@ export const initialCards = [
   }
 ];
 
-export const cardsContainerSelector = '.photo-grid__list';
-
 export const popupSelectors = {
   popupOpenClass: 'popup_opened',
   popupButtonCloseSelector: '.popup__close'
 }
 
-export const cardSelectors = {
+export const cardsSelectors = {
+  cardsContainerSelector: '.photo-grid__list',
   cardTemplateSelector: '#photo-grid-item-template',
   cardSelector: '.photo-grid__item',
   cardImgSelector: '.photo-grid__item-image',
@@ -44,3 +43,31 @@ export const cardSelectors = {
   cardPopupImg: '.mesto__image',
   cardPopupCaption: '.mesto__caption'
 };
+
+export const formProfileSelectors = {
+  formSelector: '[name="profile"]',
+  buttonOpenSelector: '[name="profile-button-open"]',
+  popupSelector: '.popup_type_profile',
+  elementNameSelector: '.profile__name',
+  elementAboutSelector: '.profile__about',
+  inputNameSelector: '[name="name"]',
+  inputAboutSelector: '[name="about"]',
+  buttonSubmitSelector: '[name="profile-submit"]'
+}
+
+export const formAddnewSelectors = {
+  formSelector: '[name="addmesto"]',
+  buttonOpenSelector: '[name="addmesto-button-open"]',
+  popupSelector: '.popup_type_addnew',
+  inputCaptionSelector: '[name="caption"]',
+  inputImageSelector: '[name="image"]',
+  buttonSubmitSelector: '[name="addmesto-submit"]'
+}
+
+export const validationSelectors = {
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible"
+}

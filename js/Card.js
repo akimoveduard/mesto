@@ -1,6 +1,6 @@
 export class Card {
 
-  constructor(cardData, selectors, popup) {
+  constructor(selectors, cardData, popup) {
     this._cardName = cardData.name;
     this._cardLink = cardData.link,
     this._selectors = selectors,
