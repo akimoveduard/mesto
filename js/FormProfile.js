@@ -33,6 +33,7 @@ export class FormProfile {
 
   openForm() {
     this._setFormInputs();
+    this._validation.hideAllErrors();
     this._validation.enableValidation();
     this._popup.openPopup();
   }

@@ -65,16 +65,31 @@ export class FormValidator {
     this._toggleButtonState();
   }
 
-  _setEventListeners() {
-    this._inputList = Array.from(
+  _inputListArray() {
+    return Array.from(
       this._form.querySelectorAll(this._inputSelector)
     );
+  }
+
+  _setEventListeners() {
+    this._inputList = this._inputListArray();
     this._toggleButtonState();
     this._inputList.forEach((input) => {
       this._input = input;
       input.addEventListener("input", (event) => {
         this._handleInputEventListener(event);
       });
+    });
+  }
+
+  // Если форму профиля закрыть клавишей Esc с полем не прошедшим валидацию,
+  // то при открытии в следующий раз, сообщение об ошибке остается видимым.
+  // Эта функция убирает все сообщения об ошибках перед открытием формы профиля.
+  hideAllErrors() {
+    this._inputList = this._inputListArray();
+    this._inputList.forEach((input) => {
+      const errorElement = this._getErrorElement(input);
+      this._hideInputError(input, errorElement);
     });
   }
 
