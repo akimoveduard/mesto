@@ -1,6 +1,6 @@
 @import url(../vendor/normalize.css);
 
-@import url(../fonts/inter.css);
+@import url(../vendor/fonts/inter.css);
 
 @import url(../blocks/page/page.css);
 
@@ -25,10 +25,11 @@
 @import url(../blocks/button/_type/button_type_submit.css);
 
 @import url(../blocks/photo-grid/__list/photo-grid__list.css);
-@import url(../blocks/photo-grid/__item/photo-grid__item.css);
-@import url(../blocks/photo-grid/__item-image/photo-grid__item-image.css);
-@import url(../blocks/photo-grid/__item-info/photo-grid__item-info.css);
-@import url(../blocks/photo-grid/__item-caption/photo-grid__item-caption.css);
+
+@import url(../blocks/card/card.css);
+@import url(../blocks/card/__image/card__image.css);
+@import url(../blocks/card/__info/card__info.css);
+@import url(../blocks/card/__caption/card__caption.css);
 @import url(../blocks/button/_type/button_type_like.css);
 @import url(../blocks/button/_type/button_type_liked.css);
 

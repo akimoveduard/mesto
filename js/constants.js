@@ -32,10 +32,10 @@ export const popupSelectors = {
 
 export const cardsSelectors = {
   cardsContainerSelector: '.photo-grid__list',
-  cardTemplateSelector: '#photo-grid-item-template',
-  cardSelector: '.photo-grid__item',
-  cardImgSelector: '.photo-grid__item-image',
-  cardCaptionSelector: '.photo-grid__item-caption',
+  cardTemplateSelector: '#card-template',
+  cardSelector: '.card',
+  cardImgSelector: '.card__image',
+  cardCaptionSelector: '.card__caption',
   cardButtonDeleteSelector: '.button_type_delete',
   cardButtonLikeSelector: '.button_type_like',
   cardButtonLikeClass: 'button_type_liked',

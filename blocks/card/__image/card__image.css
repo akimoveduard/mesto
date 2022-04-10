@@ -1,4 +1,4 @@
-.photo-grid__item-image {
+.card__image {
   display: block;
   box-sizing: border-box;
   width: 282px;
@@ -6,6 +6,6 @@
   object-fit: cover;
 }
 
-.photo-grid__item-image:hover {
+.card__image:hover {
   cursor: pointer;
 }
