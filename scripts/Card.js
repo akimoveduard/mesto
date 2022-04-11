@@ -1,10 +1,10 @@
 export class Card {
 
-  constructor(selectors, cardData, popup) {
+  constructor(selectors, cardData, { handleImageClick }) {
     this._cardName = cardData.name;
     this._cardLink = cardData.link,
     this._selectors = selectors,
-    this._popup = popup,
+    this._handleImageClick = handleImageClick,
     this._popupElement = document.querySelector(this._selectors.cardPopupSelector)
   }
 
@@ -32,13 +32,13 @@ export class Card {
     return this._card;
   }
 
-  _likeCard(button) {
-    button.classList.toggle(this._buttonActiveClass);
+  _likeCard() {
+    this._buttonLike.classList.toggle(this._buttonActiveClass);
   }
 
-  _deleteCard(card) {
-    card.remove();
-    card = null;
+  _deleteCard() {
+    this._card.remove();
+    this._card = null;
   }
 
   _generatePopup() {
@@ -50,19 +50,19 @@ export class Card {
   }
 
   _setEventListeners(card) {
-    this._buttonDelete.addEventListener(('click'), () => {
-      this._deleteCard(card);
+    this._buttonDelete.addEventListener('click', () => {
+      this._deleteCard();
     });
-    this._buttonLike.addEventListener(('click'), () => {
-      this._likeCard(this._buttonLike);
+    this._buttonLike.addEventListener('click', () => {
+      this._likeCard();
     });
-    this._cardImage.addEventListener(('click'), () => {
+    this._cardImage.addEventListener('click', () => {
       this._generatePopup();
-      this._popup.openPopup();
+      this._handleImageClick();
     })
   }
 
-  renderCard() {
+  getCard() {
     this._newCard = this._createCard();
     this._setEventListeners(this._newCard);
     return this._newCard;

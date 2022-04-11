@@ -55,7 +55,7 @@ export const formProfileSelectors = {
   buttonSubmitSelector: '[name="profile-submit"]'
 }
 
-export const formAddnewSelectors = {
+export const formAddNewSelectors = {
   formSelector: '[name="addmesto"]',
   buttonOpenSelector: '[name="addmesto-button-open"]',
   popupSelector: '.popup_type_addnew',

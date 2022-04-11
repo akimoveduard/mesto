@@ -1,12 +1,12 @@
 export class FormValidator {
   constructor(selectors, form) {
-    (this._inputSelector = selectors.inputSelector),
-      (this._submitButtonSelector = selectors.submitButtonSelector),
-      (this._inactiveButtonClass = selectors.inactiveButtonClass),
-      (this._inputErrorClass = selectors.inputErrorClass),
-      (this._errorClass = selectors.errorClass),
-      (this._form = form),
-      (this._submitButton = this._form.querySelector(this._submitButtonSelector))
+    this._inputSelector = selectors.inputSelector,
+    this._submitButtonSelector = selectors.submitButtonSelector,
+    this._inactiveButtonClass = selectors.inactiveButtonClass,
+    this._inputErrorClass = selectors.inputErrorClass,
+    this._errorClass = selectors.errorClass,
+    this._form = form,
+    this._submitButton = this._form.querySelector(this._submitButtonSelector)
   }
 
   _hasInvalidInput() {
@@ -82,9 +82,6 @@ export class FormValidator {
     });
   }
 
-  // Если форму профиля закрыть клавишей Esc и у нее есть поле не прошедшее валидацию,
-  // то при открытии в следующий раз сообщение об ошибке остается видимым.
-  // Эта функция прячет все сообщения об ошибках перед открытием формы профиля.
   hideAllErrors() {
     this._inputList = this._inputListArray();
     this._inputList.forEach((input) => {
