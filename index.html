@@ -54,7 +54,7 @@
   <section class="popup popup_type_addnew" aria-label="Форма добавления места">
     <div class="popup__wrapper">
       <button class="popup__close" type="button"></button>
-      <h2>Новое место</h2>
+      <h2 class="popup__title">Новое место</h2>
       <form class="form popup__form" name="addmesto" method="get" novalidate>
         <input class="popup__input" type="text" name="caption" required minlength="2" maxlength="30" autofocus placeholder="Название" aria-label="Название места" autocomplete="off">
         <span class="popup__error caption-input-error"></span>
@@ -75,23 +75,21 @@
     </div>
   </section>
   <!-- Шаблон карточки места -->
-  <template id="photo-grid-item-template">
-    <li class="photo-grid__item">
+  <template id="card-template">
+    <li class="card">
       <button class="button button_type_delete" type="button"></button>
-      <img class="photo-grid__item-image">
-      <div class="photo-grid__item-info">
-        <h2 class="photo-grid__item-caption"></h2>
+      <img class="card__image">
+      <div class="card__info">
+        <h2 class="card__caption"></h2>
         <button class="button button_type_like" type="button"></button>
       </div>
     </li>
   </template>
 
-  <script type="module" src="./js/Popup.js"></script>
-  <script type="module" src="./js/Card.js"></script>
-  <script type="module" src="./js/FormProfile.js"></script>
-  <script type="module" src="./js/FormAddnew.js"></script>
-  <script type="module" src="./js/FormValidator.js"></script>
-  <script type="module" src="./js/constants.js"></script>
-  <script type="module" src="./js/index.js"></script>
+  <script type="module" src="./scripts/Popup.js"></script>
+  <script type="module" src="./scripts/Card.js"></script>
+  <script type="module" src="./scripts/FormValidator.js"></script>
+  <script type="module" src="./scripts/constants.js"></script>
+  <script type="module" src="./scripts/index.js"></script>
 </body>
 </html>
