@@ -86,7 +86,7 @@ const initiateProfile = () => {
 /* ДОБАВЛЕНИЕ НОВОЙ КАРТОЧКИ */
 const handleClickButtonOpenAddNew = () => {
   validateAddNewForm.enableValidation();
-      popupAddNew.openPopup();
+  popupAddNew.openPopup();
 }
 
 const handleSubmitAddNew = () => {
@@ -99,7 +99,7 @@ const handleSubmitAddNew = () => {
     cardsSelectors,
     cardData,
     elementsPopupCard,
-    popupAddNew.openPopup()
+    () => popupCard.openPopup()
   ).getCard();
   cardsContainer.prepend(newCard);
   formAddnew.reset();
@@ -112,7 +112,12 @@ function initiateAddNew() {
 
 /* ЛОГИКА ПРИЛОЖЕНИЯ */
 initialCards.forEach((card) => {
-  const newCard = new Card(cardsSelectors, card, elementsPopupCard, openPopupCard).getCard();
+  const newCard = new Card(
+    cardsSelectors,
+    card,
+    elementsPopupCard,
+    () => popupCard.openPopup()
+  ).getCard();
   cardsContainer.append(newCard);
 });
 
