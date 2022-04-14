@@ -15,11 +15,11 @@ const cardsContainer = document.querySelector(cardsSelectors.cardsContainerSelec
 
 // popupCard
 const popupCardElement = document.querySelector(cardsSelectors.cardPopupSelector);
-const elementsPopupCard = {
+export const elementsPopupCard = {
   elementImage: popupCardElement.querySelector(cardsSelectors.cardPopupImg),
   elementCaption: popupCardElement.querySelector(cardsSelectors.cardPopupCaption)
 }
-const popupCard = new Popup(popupSelectors, popupCardElement);
+export const popupCard = new Popup(popupSelectors, popupCardElement);
 
 // profile
 const popupProfileElement = document.querySelector(formProfileSelectors.popupSelector);
@@ -36,7 +36,7 @@ const profileElements = [
     inputElement:  formProfile.querySelector(formProfileSelectors.inputAboutSelector)
   }
 ];
-const validateProfile = new FormValidator(
+const profileFormValidator = new FormValidator(
   validationSelectors,
   formProfile
 );
@@ -44,14 +44,14 @@ const validateProfile = new FormValidator(
 // addnew
 const popupAddNewElement = document.querySelector(formAddNewSelectors.popupSelector);
 const popupAddNew = new Popup (popupSelectors, popupAddNewElement);
-const formAddnew = document.querySelector(formAddNewSelectors.formSelector);
-const validateAddNewForm = new FormValidator(
+const formAddNew = document.querySelector(formAddNewSelectors.formSelector);
+const formAddNewValidator = new FormValidator(
   validationSelectors,
-  formAddnew
+  formAddNew
 );
-const buttonOpenAddnew = document.querySelector(formAddNewSelectors.buttonOpenSelector);
-const inputAddnewCaption = formAddnew.querySelector(formAddNewSelectors.inputCaptionSelector);
-const inputAddnewImage = formAddnew.querySelector(formAddNewSelectors.inputImageSelector);
+const buttonOpenAddNew = document.querySelector(formAddNewSelectors.buttonOpenSelector);
+const inputAddnewCaption = formAddNew.querySelector(formAddNewSelectors.inputCaptionSelector);
+const inputAddnewImage = formAddNew.querySelector(formAddNewSelectors.inputImageSelector);
 
 /* ПРОФИЛЬ */
 const getProfileValues = (elements) => {
@@ -67,8 +67,8 @@ const setProfileValue = (elements) => {
 }
 
 const handleClickButtonOpenProfile = () => {
-  validateProfile.hideAllErrors();
-  validateProfile.enableValidation();
+  profileFormValidator.hideAllErrors();
+  profileFormValidator.enableValidation();
   popupProfile.openPopup();
 }
 
@@ -85,7 +85,7 @@ const initiateProfile = () => {
 
 /* ДОБАВЛЕНИЕ НОВОЙ КАРТОЧКИ */
 const handleClickButtonOpenAddNew = () => {
-  validateAddNewForm.enableValidation();
+  formAddNewValidator.enableValidation();
   popupAddNew.openPopup();
 }
 
@@ -94,20 +94,18 @@ const handleSubmitAddNew = () => {
     name: inputAddnewCaption.value,
     link: inputAddnewImage.value
   };
-  popupAddNew.closePopup();
   const newCard = new Card(
     cardsSelectors,
-    cardData,
-    elementsPopupCard,
-    () => popupCard.openPopup()
+    cardData
   ).getCard();
   cardsContainer.prepend(newCard);
-  formAddnew.reset();
+  popupAddNew.closePopup();
+  formAddNew.reset();
 }
 
 function initiateAddNew() {
-  buttonOpenAddnew.addEventListener('click', handleClickButtonOpenAddNew);
-  formAddnew.addEventListener('submit', handleSubmitAddNew);
+  buttonOpenAddNew.addEventListener('click', handleClickButtonOpenAddNew);
+  formAddNew.addEventListener('submit', handleSubmitAddNew);
 }
 
 /* ЛОГИКА ПРИЛОЖЕНИЯ */
@@ -115,7 +113,6 @@ initialCards.forEach((card) => {
   const newCard = new Card(
     cardsSelectors,
     card,
-    elementsPopupCard,
     () => popupCard.openPopup()
   ).getCard();
   cardsContainer.append(newCard);
