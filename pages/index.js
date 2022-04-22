@@ -1,123 +1,137 @@
-import { Popup } from '../scripts/Popup.js';
-import { Card } from '../scripts/Card.js';
-import { FormValidator } from '../scripts/FormValidator.js';
 import {
   initialCards,
   popupSelectors,
+  popupWithImageSelectors,
   cardsSelectors,
+  userInfoSelectors,
   formProfileSelectors,
-  formAddNewSelectors,
-  validationSelectors
-} from "../scripts/settings.js";
+  formAddCardSelectors,
+  formSelectors
+} from "../utils/constants.js";
 
-/* ВЕБ-ЭЛЕМЕНТЫ */
 const cardsContainer = document.querySelector(cardsSelectors.cardsContainerSelector);
 
-// popupCard
-const popupCardElement = document.querySelector(cardsSelectors.cardPopupSelector);
-export const elementsPopupCard = {
-  elementImage: popupCardElement.querySelector(cardsSelectors.cardPopupImg),
-  elementCaption: popupCardElement.querySelector(cardsSelectors.cardPopupCaption)
-}
-export const popupCard = new Popup(popupSelectors, popupCardElement);
+import { Section } from "../components/Section.js";
+import { UserInfo } from "../components/UserInfo.js";
+import { PopupWithImage } from "../components/PopupWithImage.js";
+import { PopupWithForm } from "../components/PopupWithForm.js";
+import { Card } from "../components/Card.js";
+import { FormValidator } from "../components/FormValidator.js";
 
-// profile
+// userInfo
+const userInfo = new UserInfo(userInfoSelectors);
+
+// popupProfile
 const popupProfileElement = document.querySelector(formProfileSelectors.popupSelector);
-const popupProfile = new Popup (popupSelectors, popupProfileElement);
+const buttonPopupProfle = document.querySelector(formProfileSelectors.buttonOpenSelector);
+
 const formProfile = document.querySelector(formProfileSelectors.formSelector);
-const buttonOpenProfile = document.querySelector(formProfileSelectors.buttonOpenSelector);
-const profileElements = [
-  {
-    profileElement: document.querySelector(formProfileSelectors.elementNameSelector),
-    inputElement:  formProfile.querySelector(formProfileSelectors.inputNameSelector)
-  },
-  {
-    profileElement: document.querySelector(formProfileSelectors.elementAboutSelector),
-    inputElement:  formProfile.querySelector(formProfileSelectors.inputAboutSelector)
-  }
-];
+const formProfileInputs = {
+  name: formProfile.querySelector(formProfileSelectors.inputNameSelector),
+  about: formProfile.querySelector(formProfileSelectors.inputAboutSelector)
+}
+
 const profileFormValidator = new FormValidator(
-  validationSelectors,
+  formSelectors,
   formProfile
 );
 
-// addnew
-const popupAddNewElement = document.querySelector(formAddNewSelectors.popupSelector);
-const popupAddNew = new Popup (popupSelectors, popupAddNewElement);
-const formAddNew = document.querySelector(formAddNewSelectors.formSelector);
-const formAddNewValidator = new FormValidator(
-  validationSelectors,
-  formAddNew
+// popupAddCart
+const formAddCard = document.querySelector(formAddCardSelectors.formSelector);
+const popupAddCardElement = document.querySelector(formAddCardSelectors.popupSelector);
+const buttonAddCardOpen = document.querySelector(formAddCardSelectors.buttonOpenSelector);
+
+const formAddCardValidator = new FormValidator(
+  formSelectors,
+  formAddCard
 );
-const buttonOpenAddNew = document.querySelector(formAddNewSelectors.buttonOpenSelector);
-const inputAddnewCaption = formAddNew.querySelector(formAddNewSelectors.inputCaptionSelector);
-const inputAddnewImage = formAddNew.querySelector(formAddNewSelectors.inputImageSelector);
 
-/* ПРОФИЛЬ */
-const getProfileValues = (elements) => {
-  elements.forEach((element) => {
-    element.inputElement.value = element.profileElement.textContent;
-  });
-}
+// popupWithImage
+const popupWithImageElement = document.querySelector(
+  popupWithImageSelectors.popupSelector
+);
+const popupWithImageElements = {
+  image: popupWithImageElement.querySelector(popupWithImageSelectors.popupImage),
+  caption: popupWithImageElement.querySelector(popupWithImageSelectors.popupCaption)
+};
 
-const setProfileValue = (elements) => {
-  elements.forEach((element) => {
-    element.profileElement.textContent = element.inputElement.value;
-  });
-}
+/* Попап c картинкой */
+const popupPicture = new PopupWithImage(
+  popupSelectors,
+  popupWithImageElement,
+  popupWithImageElements
+);
 
-const handleClickButtonOpenProfile = () => {
+/* Попап формы профиля */
+const popupProfile = new PopupWithForm(
+  popupSelectors,
+  popupProfileElement,
+  formProfile,
+  formSelectors.inputSelector,
+  {
+    submitForm: (inputs) => {
+      userInfo.setUserInfo(inputs);
+    }
+  }
+);
+
+buttonPopupProfle.addEventListener('click', () => {
+  const userValues = userInfo.getUserInfo();
+  popupProfile.setValuesToInputs(userValues, formProfileInputs);
   profileFormValidator.hideAllErrors();
   profileFormValidator.enableValidation();
   popupProfile.openPopup();
-}
-
-const handleSubmitProfile = () => {
-  setProfileValue(profileElements);
-  popupProfile.closePopup();
-}
-
-const initiateProfile = () => {
-  getProfileValues(profileElements);
-  buttonOpenProfile.addEventListener('click', handleClickButtonOpenProfile);
-  formProfile.addEventListener('submit', handleSubmitProfile);
-};
-
-/* ДОБАВЛЕНИЕ НОВОЙ КАРТОЧКИ */
-const handleClickButtonOpenAddNew = () => {
-  formAddNewValidator.enableValidation();
-  popupAddNew.openPopup();
-}
-
-const handleSubmitAddNew = () => {
-  const cardData = {
-    name: inputAddnewCaption.value,
-    link: inputAddnewImage.value
-  };
-  const newCard = new Card(
-    cardsSelectors,
-    cardData
-  ).getCard();
-  cardsContainer.prepend(newCard);
-  popupAddNew.closePopup();
-  formAddNew.reset();
-}
-
-function initiateAddNew() {
-  buttonOpenAddNew.addEventListener('click', handleClickButtonOpenAddNew);
-  formAddNew.addEventListener('submit', handleSubmitAddNew);
-}
-
-/* ЛОГИКА ПРИЛОЖЕНИЯ */
-initialCards.forEach((card) => {
-  const newCard = new Card(
-    cardsSelectors,
-    card,
-    () => popupCard.openPopup()
-  ).getCard();
-  cardsContainer.append(newCard);
 });
 
-initiateProfile();
+popupProfile.setEventListeners();
 
-initiateAddNew();
+/* Отрисовка начальных карточек */
+const createNewCard = (item) => {
+  const card = new Card (
+    cardsSelectors,
+    item,
+    {
+      handleCardClick: () => {
+        popupPicture.openPopup(item);
+      }
+    }
+  ).getCard();
+  return (card);
+}
+
+const cardsList = new Section({
+  items: initialCards,
+  renderer: (item) => {
+    const card = createNewCard(item);
+    cardsList.addItem(card, 'append');
+  }
+}, cardsContainer);
+
+cardsList.renderItems();
+
+/* Добавление новой карточки */
+const popupAddCard = new PopupWithForm(
+  popupSelectors,
+  popupAddCardElement,
+  formAddCard,
+  formSelectors.inputSelector,
+  {
+    submitForm: (inputs) => {
+      const newCard = new Section({
+        items: [inputs],
+        renderer: (item) => {
+          const card = createNewCard(item);
+          cardsList.addItem(card);
+        }
+      }, cardsContainer);
+      newCard.renderItems();
+    }
+  }
+);
+
+buttonAddCardOpen.addEventListener('click', ()=> {
+  formAddCardValidator.enableValidation();
+  popupAddCard.openPopup();
+});
+
+popupAddCard.setEventListeners();

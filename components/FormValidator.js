@@ -91,10 +91,6 @@ export class FormValidator {
   }
 
   enableValidation() {
-    this._handleFormSubmit = (event) => {
-      event.preventDefault();
-    };
-    this._form.addEventListener("submit", this._handleFormSubmit);
     this._form.addEventListener("reset", () => {
       this._disableSubmitButton(this._submitButton, this._inactiveButtonClass);
     });
