@@ -6,16 +6,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Место Россия</title>
-  <link rel="stylesheet" href="./pages/index.css">
 </head>
 
 <body class="page">
   <header class="header">
-    <img class="logo" src="./images/logo.svg" alt="Логотип Mesto Russia">
+    <img class="logo" src="<%=require('./images/logo.svg')%>" alt="Логотип Mesto Russia">
   </header>
   <div class="content">
     <section class="profile" aria-label="Профиль">
-      <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватар пользователя">
+      <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="Аватар пользователя">
       <div class="profile__info">
         <div class="profile__title">
           <h1 class="profile__name">Пабло Пикассо</h1>
@@ -85,15 +84,5 @@
       </div>
     </li>
   </template>
-
-  <script type="module" src="./utils/constants.js"></script>
-  <script type="module" src="./pages/index.js"></script>
-  <script type="module" src="./components/Section.js"></script>
-  <script type="module" src="./components/Card.js"></script>
-  <script type="module" src="./components/Popup.js"></script>
-  <script type="module" src="./components/PopupWithImage.js"></script>
-  <script type="module" src="./components/PopupWithForm.js"></script>
-  <script type="module" src="./components/FormValidator.js"></script>
-  <script type="module" src="./components/UserInfo.js"></script>
 </body>
 </html>

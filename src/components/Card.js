@@ -3,7 +3,7 @@ export class Card {
     this._selectors = selectors;
     this._cardName = cardData.caption;
     this._cardLink = cardData.link;
-    this._handleCardClick = handleCardClick;
+    this.handleCardClick = handleCardClick;
   }
 
   _createCard() {
@@ -43,7 +43,7 @@ export class Card {
   _setEventListeners() {
     this._buttonDelete.addEventListener('click', this._deleteCard.bind(this));
     this._buttonLike.addEventListener('click', this._likeCard.bind(this));
-    this._cardImage.addEventListener('click', this._handleCardClick.bind(this));
+    this._cardImage.addEventListener('click', this.handleCardClick.bind(this));
   }
 
   getCard() {
