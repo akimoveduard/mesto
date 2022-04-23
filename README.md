@@ -14,6 +14,7 @@
 * Git
 * БЭМ-методология
 * JavaSctipt
+* Webpack
 
 ---
 

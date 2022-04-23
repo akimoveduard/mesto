@@ -6,7 +6,7 @@ export class Section {
     this._container = container;
   }
 
-  addItem(item, locate = 'preprend') {
+  addItem(item, locate = 'prepend') {
     (locate == 'append') ? this._container.append(item) : this._container.prepend(item);
   }
 

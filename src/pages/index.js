@@ -1,3 +1,5 @@
+import './index.css';
+
 import {
   initialCards,
   popupSelectors,
@@ -9,14 +11,14 @@ import {
   formSelectors
 } from "../utils/constants.js";
 
-const cardsContainer = document.querySelector(cardsSelectors.cardsContainerSelector);
-
 import { Section } from "../components/Section.js";
 import { UserInfo } from "../components/UserInfo.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { Card } from "../components/Card.js";
 import { FormValidator } from "../components/FormValidator.js";
+
+const cardsContainer = document.querySelector(cardsSelectors.cardsContainerSelector);
 
 // userInfo
 const userInfo = new UserInfo(userInfoSelectors);
@@ -76,11 +78,10 @@ const popupProfile = new PopupWithForm(
 );
 
 buttonPopupProfle.addEventListener('click', () => {
-  const userValues = userInfo.getUserInfo();
-  popupProfile.setValuesToInputs(userValues, formProfileInputs);
+  popupProfile.setValuesToInputs(userInfo.getUserInfo(), formProfileInputs);
   profileFormValidator.hideAllErrors();
   profileFormValidator.enableValidation();
-  popupProfile.openPopup();
+  popupProfile.open();
 });
 
 popupProfile.setEventListeners();
@@ -92,7 +93,7 @@ const createNewCard = (item) => {
     item,
     {
       handleCardClick: () => {
-        popupPicture.openPopup(item);
+        popupPicture.open(item);
       }
     }
   ).getCard();
@@ -131,7 +132,7 @@ const popupAddCard = new PopupWithForm(
 
 buttonAddCardOpen.addEventListener('click', ()=> {
   formAddCardValidator.enableValidation();
-  popupAddCard.openPopup();
+  popupAddCard.open();
 });
 
 popupAddCard.setEventListeners();
