@@ -1,3 +1,4 @@
+/* imports */
 import './index.css';
 
 import {
@@ -18,37 +19,23 @@ import { PopupWithForm } from "../components/PopupWithForm.js";
 import { Card } from "../components/Card.js";
 import { FormValidator } from "../components/FormValidator.js";
 
+/* global */
 const cardsContainer = document.querySelector(cardsSelectors.cardsContainerSelector);
 
-// userInfo
 const userInfo = new UserInfo(userInfoSelectors);
 
-// popupProfile
 const popupProfileElement = document.querySelector(formProfileSelectors.popupSelector);
 const buttonPopupProfle = document.querySelector(formProfileSelectors.buttonOpenSelector);
-
 const formProfile = document.querySelector(formProfileSelectors.formSelector);
 const formProfileInputs = {
   name: formProfile.querySelector(formProfileSelectors.inputNameSelector),
   about: formProfile.querySelector(formProfileSelectors.inputAboutSelector)
 }
 
-const profileFormValidator = new FormValidator(
-  formSelectors,
-  formProfile
-);
-
-// popupAddCart
 const formAddCard = document.querySelector(formAddCardSelectors.formSelector);
 const popupAddCardElement = document.querySelector(formAddCardSelectors.popupSelector);
 const buttonAddCardOpen = document.querySelector(formAddCardSelectors.buttonOpenSelector);
 
-const formAddCardValidator = new FormValidator(
-  formSelectors,
-  formAddCard
-);
-
-// popupWithImage
 const popupWithImageElement = document.querySelector(
   popupWithImageSelectors.popupSelector
 );
@@ -57,14 +44,20 @@ const popupWithImageElements = {
   caption: popupWithImageElement.querySelector(popupWithImageSelectors.popupCaption)
 };
 
-/* Попап c картинкой */
+/* classes */
+const cardsList = new Section({
+  renderer: (item) => {
+    const card = createNewCard(item);
+    cardsList.addItem(card, 'append');
+  }
+}, cardsContainer);
+
 const popupPicture = new PopupWithImage(
   popupSelectors,
   popupWithImageElement,
   popupWithImageElements
 );
 
-/* Попап формы профиля */
 const popupProfile = new PopupWithForm(
   popupSelectors,
   popupProfileElement,
@@ -76,17 +69,29 @@ const popupProfile = new PopupWithForm(
     }
   }
 );
+const profileFormValidator = new FormValidator(
+  formSelectors,
+  formProfile
+);
 
-buttonPopupProfle.addEventListener('click', () => {
-  popupProfile.setValuesToInputs(userInfo.getUserInfo(), formProfileInputs);
-  profileFormValidator.hideAllErrors();
-  profileFormValidator.enableValidation();
-  popupProfile.open();
-});
+const popupAddCard = new PopupWithForm(
+  popupSelectors,
+  popupAddCardElement,
+  formAddCard,
+  formSelectors.inputSelector,
+  {
+    submitForm: (inputs) => {
+      const card = createNewCard(inputs);
+      cardsList.addItem(card);
+    }
+  }
+);
+const formAddCardValidator = new FormValidator(
+  formSelectors,
+  formAddCard
+);
 
-popupProfile.setEventListeners();
-
-/* Отрисовка начальных карточек */
+/* Functions */
 const createNewCard = (item) => {
   const card = new Card (
     cardsSelectors,
@@ -100,39 +105,20 @@ const createNewCard = (item) => {
   return (card);
 }
 
-const cardsList = new Section({
-  items: initialCards,
-  renderer: (item) => {
-    const card = createNewCard(item);
-    cardsList.addItem(card, 'append');
-  }
-}, cardsContainer);
-
-cardsList.renderItems();
-
-/* Добавление новой карточки */
-const popupAddCard = new PopupWithForm(
-  popupSelectors,
-  popupAddCardElement,
-  formAddCard,
-  formSelectors.inputSelector,
-  {
-    submitForm: (inputs) => {
-      const newCard = new Section({
-        items: [inputs],
-        renderer: (item) => {
-          const card = createNewCard(item);
-          cardsList.addItem(card);
-        }
-      }, cardsContainer);
-      newCard.renderItems();
-    }
-  }
-);
-
-buttonAddCardOpen.addEventListener('click', ()=> {
-  formAddCardValidator.enableValidation();
-  popupAddCard.open();
+/* EventListeners */
+buttonPopupProfle.addEventListener('click', () => {
+  popupProfile.setValuesToInputs(userInfo.getUserInfo(), formProfileInputs);
+  profileFormValidator.reValidateForm();
+  popupProfile.open();
 });
+popupProfile.setEventListeners();
 
+buttonAddCardOpen.addEventListener('click', () => popupAddCard.open());
 popupAddCard.setEventListeners();
+
+/* Start */
+cardsList.renderItems(initialCards);
+
+profileFormValidator.enableValidation();
+
+formAddCardValidator.enableValidation();
