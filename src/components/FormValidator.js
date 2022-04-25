@@ -84,6 +84,7 @@ export class FormValidator {
   }
 
   _setEventListeners() {
+    this.reValidateForm();
     this._form.addEventListener("reset", () => {
       this._disableSubmitButton(this._submitButton, this._inactiveButtonClass);
       this._hideAllErrors();
