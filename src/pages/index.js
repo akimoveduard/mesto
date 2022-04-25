@@ -113,7 +113,12 @@ buttonPopupProfle.addEventListener('click', () => {
 });
 popupProfile.setEventListeners();
 
-buttonAddCardOpen.addEventListener('click', () => popupAddCard.open());
+buttonAddCardOpen.addEventListener('click', () =>
+  {
+    popupAddCard.open()
+    popupAddCard.reValidateForm();
+  }
+);
 popupAddCard.setEventListeners();
 
 /* Start */
