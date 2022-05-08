@@ -6,21 +6,25 @@
 .logo{transition:.5s ease;width:142px}@media screen and (max-width:425px){.logo{transition:.5s ease;width:104px}}
 .content{margin:0 auto;max-width:880px;padding:36px 10% 50px}@media screen and (max-width:425px){.content{padding:38px 19px 48px}}
 .profile{align-items:center;color:#fff;display:flex;flex-direction:row;justify-content:space-between;margin-bottom:49px}@media screen and (max-width:767px){.profile{flex-direction:column;margin-bottom:36px}}
-.profile__avatar{border-radius:50%;display:block;margin-right:30px;max-height:120px;min-width:120px;-o-object-fit:cover;object-fit:cover}@media screen and (max-width:767px){.profile__avatar{margin:0 0 25px}}
+.profile__avatar-wrapper{margin-right:30px;position:relative}@media screen and (max-width:767px){.profile__avatar-wrapper{margin:0 0 25px}}
+.profile__avatar{border-radius:50%;height:120px;-o-object-fit:cover;object-fit:cover;width:120px}
 .profile__info{display:flex;flex-direction:column;justify-content:center;margin-right:30px;max-width:470px;min-width:282px;width:100%}@media screen and (max-width:767px){.profile__info{margin:0 0 33px;max-width:579px}}@media screen and (max-width:425px){.profile__info{max-width:280px}}
 .profile__title{align-items:flex-end;display:flex;flex-direction:row;justify-content:flex-start}@media screen and (max-width:767px){.profile__title{justify-content:center}}
-.profile__name{box-sizing:border-box;font-size:42px;font-weight:500;line-height:48px;margin:0 0 8px;overflow:hidden;padding:0;text-overflow:ellipsis;white-space:nowrap}@media screen and (max-width:1024px){.profile__name{font-size:36px}}@media screen and (max-width:768px){.profile__name{font-size:27px;line-height:33px;margin:0 0 9px}}
+.profile__username{box-sizing:border-box;font-size:42px;font-weight:500;line-height:48px;margin:0 0 8px;overflow:hidden;padding:0;text-overflow:ellipsis;white-space:nowrap}@media screen and (max-width:1024px){.profile__username{font-size:36px}}@media screen and (max-width:768px){.profile__username{font-size:27px;line-height:33px;margin:0 0 9px}}
 .profile__about{box-sizing:border-box;font-size:18px;line-height:22px;margin:0;overflow:hidden;padding:0 42px 0 0;text-overflow:ellipsis;white-space:nowrap}@media screen and (max-width:1024px){.profile__about{font-size:14px}}@media screen and (max-width:767px){.profile__about{line-height:17px;text-align:center}}
 .button_type_edit{align-self:flex-end;background-color:transparent;background-image:url(6c7bf05444b9793fdf6e.svg);background-position:50%;background-repeat:no-repeat;background-size:10px 10px;border:1px solid #fff;box-sizing:border-box;display:block;margin-bottom:17px;margin-left:10px;min-height:24px;min-width:24px}@media screen and (max-width:767px){.button_type_edit{background-size:7px 7px;min-height:18px;min-width:18px}}
 .button_type_add{background-color:transparent;background-image:url(bed8c136e13907f5eefb.svg);background-position:50%;background-repeat:no-repeat;background-size:22px;border:2px solid #fff;border-radius:2px;box-sizing:border-box;display:block;margin-left:auto;min-height:50px;min-width:150px}@media screen and (max-width:767px){.button_type_add{background-size:16px;margin:0 auto;max-width:282px;width:100%}}
 .button_type_delete{background-color:transparent;background-image:url(e3c42771bff3aaa52f76.svg);background-position:50%;background-repeat:no-repeat;background-size:18px 20px;border:0;box-sizing:border-box;height:20px;position:absolute;right:20px;top:20px;width:18px}
 .button_type_submit{background-color:#000;border:1px solid #000;border-radius:2px;color:#fff;font-size:18px;line-height:22px;margin-bottom:37px;margin-top:15px;padding:14px 10px;text-align:center}.button_type_submit:hover{opacity:.8}@media screen and (max-width:425px){.button_type_submit{font-size:14px;line-height:17px;margin-bottom:25px;margin-top:12px}}
+.button_type_avatar{background:rgba(0,0,0,.8);background-image:url(6c7bf05444b9793fdf6e.svg);background-position:50%;background-repeat:no-repeat;background-size:26px 26px;border:0;border-radius:50%;height:120px;left:0;opacity:0;position:absolute;top:0;width:120px}.button_type_avatar:hover{opacity:1}
 .photo-grid__list{grid-gap:19px 17px;display:grid;grid-template-columns:repeat(auto-fit,282px);justify-content:center;list-style:none;margin:0;padding:0}
 .card{border-radius:10px;list-style-type:none;margin:0;max-width:282px;min-width:282px;overflow:hidden;padding:0;position:relative}
 .card__image{box-sizing:border-box;display:block;height:282px;-o-object-fit:cover;object-fit:cover;width:282px}.card__image:hover{cursor:pointer}
-.card__info{background-color:#fff;display:flex;flex-direction:row;justify-content:space-between;margin:0;padding:25px 0 25px 22px}
+.card__info{align-items:center;background-color:#fff;display:flex;flex-direction:row;justify-content:space-between;margin:0;padding:22px 0 22px 22px}
 .card__caption{font-size:24px;font-weight:900;line-height:29px;margin:0;max-width:200px;overflow:hidden;padding:0;text-overflow:ellipsis;white-space:nowrap}
-.button_type_like{background-color:transparent;background-image:url(1ad06e85f169668a1f36.svg);background-position:50%;background-repeat:no-repeat;background-size:22px 19px;border:0;display:block;margin-right:20px;min-width:22px;transition:.3 ease}.button_type_like:hover{opacity:.5}
+.card__likes-counter{font-size:13px;line-height:16px;margin:3px 0 0;padding:0;text-align:center}
+.card__likes{display:flex;flex-direction:column;height:38px;justify-content:center;margin:0 20px 0 0;max-width:22px;overflow:hidden;padding:0}
+.button_type_like{background-color:transparent;background-image:url(1ad06e85f169668a1f36.svg);background-position:50%;background-repeat:no-repeat;background-size:22px 19px;border:0;display:block;min-height:19px;min-width:22px;transition:.3 ease}.button_type_like:hover{opacity:.5}
 .button_type_liked{background-image:url(35948469632d0421d697.svg)}
 .footer{margin:0 auto;max-width:880px;padding:0 10% 60px}@media screen and (max-width:425px){.footer{padding:0 19px 36px}}
 .footer__copyright{color:#545454;font-size:18px;font-weight:400;line-height:22px;margin:0}@media screen and (max-width:425px){.footer__copyright{font-size:14px}}
@@ -41,3 +45,5 @@
 .mesto__image{display:block;height:100%;max-height:75vh;max-width:75vh;-o-object-fit:contain;object-fit:contain;width:100%}
 .mesto__caption{color:#fff;font-size:12px;line-height:15px;margin-top:10px}
 
+
+/*# sourceMappingURL=main.css.map*/
