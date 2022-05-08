@@ -1,30 +1,3 @@
-export const initialCards = [
-  {
-    caption: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    caption: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    caption: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    caption: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    caption: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    caption: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 export const popupSelectors = {
   popupOpenClass: 'popup_opened',
   popupButtonCloseSelector: '.popup__close'
@@ -42,21 +15,31 @@ export const cardsSelectors = {
   cardSelector: '.card',
   cardImgSelector: '.card__image',
   cardCaptionSelector: '.card__caption',
+  cardLikesSelector: '.card__likes-counter',
   cardButtonDeleteSelector: '.button_type_delete',
   cardButtonLikeSelector: '.button_type_like',
   cardButtonLikeClass: 'button_type_liked'
 };
 
 export const userInfoSelectors = {
-  nameSelector: '.profile__name',
+  nameSelector: '.profile__username',
   aboutSelector: '.profile__about',
+  avatarSelector: '.profile__avatar'
+}
+
+export const formUserAvatarSelectors = {
+  formSelector: '[name="avatar"]',
+  buttonOpenSelector: '[name="avatar-button-open"]',
+  popupSelector: '.popup_type_avatar',
+  inputUrlSelector: '[name="avatar"]',
+  buttonSubmitSelector: '[name="avatar-submit"]'
 }
 
 export const formProfileSelectors = {
   formSelector: '[name="profile"]',
   buttonOpenSelector: '[name="profile-button-open"]',
   popupSelector: '.popup_type_profile',
-  inputNameSelector: '[name="name"]',
+  inputNameSelector: '[name="username"]',
   inputAboutSelector: '[name="about"]',
   buttonSubmitSelector: '[name="profile-submit"]'
 }
@@ -68,6 +51,12 @@ export const formAddCardSelectors = {
   inputCaptionSelector: '[name="caption"]',
   inputImageSelector: '[name="link"]',
   buttonSubmitSelector: '[name="addcard-submit"]'
+}
+
+export const formConfirmDeleteSelectors = {
+  formSelector: '[name="delete"]',
+  popupSelector: '.popup_type_delete',
+  buttonSubmitSelector: '[name="delete-submit"]'
 }
 
 export const formSelectors = {
