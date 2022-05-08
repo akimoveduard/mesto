@@ -72,15 +72,15 @@ export class FormValidator {
     );
   }
 
+  reValidateForm() {
+    this._toggleButtonState();
+  }
+
   _hideAllErrors() {
     this._inputList.forEach((input) => {
       const errorElement = this._getErrorElement(input);
       this._hideInputError(input, errorElement);
     });
-  }
-
-  reValidateForm() {
-    this._toggleButtonState();
   }
 
   _setEventListeners() {

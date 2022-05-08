@@ -14,13 +14,16 @@
   </header>
   <div class="content">
     <section class="profile" aria-label="Профиль">
-      <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="Аватар пользователя">
+      <div class="profile__avatar-wrapper">
+        <img class="profile__avatar" alt="Аватар пользователя">
+        <button class="button button_type_avatar" name="avatar-button-open" type="button"></button>
+      </div>
       <div class="profile__info">
         <div class="profile__title">
-          <h1 class="profile__name">Пабло Пикассо</h1>
+          <h1 class="profile__username"></h1>
           <button class="button button_type_edit" name="profile-button-open" type="button"></button>
         </div>
-        <p class="profile__about">Художник, скульптор, график</p>
+        <p class="profile__about"></p>
       </div>
       <button class="button button_type_add" name="addcard-button-open" type="button"></button>
     </section>
@@ -38,9 +41,9 @@
       <button class="popup__close" type="button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="form popup__form" name="profile" method="get" novalidate>
-        <input class="popup__input" type="text" name="name" required autofocus placeholder="Имя"
+        <input class="popup__input" type="text" name="username" required autofocus placeholder="Имя"
           aria-label="Имя" minlength="2" maxlength="40" autocomplete="off">
-        <span class="popup__error name-input-error"></span>
+        <span class="popup__error username-input-error"></span>
         <input class="popup__input" type="text" name="about" required placeholder="О себе"
             aria-label="О себе" minlength="2" maxlength="200" autocomplete="off">
         <span class="popup__error about-input-error"></span>
@@ -63,6 +66,18 @@
       </form>
     </div>
   </section>
+  <!-- Модальное окно аватара -->
+  <section class="popup popup_type_avatar" aria-label="Смена аватара">
+    <div class="popup__wrapper">
+      <button class="popup__close" type="button"></button>
+      <h2 class="popup__title">Обновить аватар</h2>
+      <form class="form popup__form" name="avatar" method="get" novalidate>
+        <input class="popup__input" type="url" name="avatar" required placeholder="Ссылка на аватар" aria-label="Ссылка на аватар" autocomplete="off">
+        <span class="popup__error avatar-input-error"></span>
+        <button class="button button_type_submit popup__button" name="avatar-submit" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </section>
   <!-- Модальное окно места -->
   <section class="popup popup_type_mesto" aria-label="Фото места">
     <div class="mesto">
@@ -73,6 +88,16 @@
       </figure>
     </div>
   </section>
+  <!-- Модальное окно подтверждения удаления карточки-->
+  <section class="popup popup_type_delete" aria-label="Подтверждение удаления карточки">
+    <div class="popup__wrapper">
+      <button class="popup__close" type="button"></button>
+      <h2 class="popup__title">Вы уверены?</h2>
+      <form class="form popup__form" name="delete" method="get" novalidate>
+        <button class="button button_type_submit popup__button" name="delete-submit" type="submit">Да</button>
+      </form>
+    </div>
+  </section>
   <!-- Шаблон карточки места -->
   <template id="card-template">
     <li class="card">
@@ -80,7 +105,10 @@
       <img class="card__image">
       <div class="card__info">
         <h2 class="card__caption"></h2>
-        <button class="button button_type_like" type="button"></button>
+        <figure class="card__likes">
+          <button class="button button_type_like" type="button"></button>
+          <figcaption class="card__likes-counter" aria-label="Количество лайков"></figcaption>
+        </figure>
       </div>
     </li>
   </template>

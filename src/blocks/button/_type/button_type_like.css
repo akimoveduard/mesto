@@ -6,7 +6,7 @@
   background-position: center;
   background-size: 22px 19px;
   min-width: 22px;
-  margin-right: 20px;
+  min-height: 19px;
   background-color: transparent;
   transition: .3 ease;
 }

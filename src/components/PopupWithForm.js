@@ -5,9 +5,20 @@ export class PopupWithForm extends Popup {
   constructor(popupSelectors, popup, form, inputSelector, { submitForm }) {
     super(popupSelectors, popup);
     this._form = form;
-    this._inputList = form.querySelectorAll(inputSelector);
+    this._inputsList = form.querySelectorAll(inputSelector);
     this._submitEventHandler = this._submitEventHandler.bind(this);
     this._submitForm = submitForm;
+    this._submitButton = this._form.elements[this._form.name + '-submit']
+    this._initButtonCaption = this._submitButton.textContent;
+  }
+
+  showSavingMsg(show, caption = 'Сохранение...') {
+    if (show) {
+      this._submitButton.textContent = caption;
+    } else {
+      this._submitButton.textContent = this._initButtonCaption;
+    }
+    
   }
 
   setValuesToInputs(values, inputs) {
@@ -18,7 +29,7 @@ export class PopupWithForm extends Popup {
 
   _getInputValues() {
     const inputs = {};
-    this._inputList.forEach(input => {
+    this._inputsList.forEach(input => {
       inputs[input.name] = input.value;
     });
     return (inputs);
@@ -26,8 +37,7 @@ export class PopupWithForm extends Popup {
 
   _submitEventHandler(event) {
     event.preventDefault();
-    this._submitForm(this._getInputValues());
-    this.close();
+    if (this._inputsList) this._submitForm(this._getInputValues());
   }
 
   setEventListeners() {
