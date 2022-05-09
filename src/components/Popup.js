@@ -3,6 +3,7 @@ export class Popup {
     this._popupSelectors = popupSelectors;
     this._popup = popup;
     this._buttonClose = this._popup.querySelector(this._popupSelectors.popupButtonCloseSelector);
+    this._handleEscClose = this._handleEscClose.bind(this);
   }
 
   setEventListeners() {
@@ -15,7 +16,7 @@ export class Popup {
 
   open() {
     this._popup.classList.add(this._popupSelectors.popupOpenClass);
-    document.addEventListener('keydown', () => this._handleEscClose(event));
+    document.addEventListener('keydown', this._handleEscClose);
     this.setEventListeners();
   }
 
@@ -24,7 +25,7 @@ export class Popup {
     document.removeEventListener('keydown', this._handleEscClose);
   }
 
-  _handleEscClose() {
+  _handleEscClose(event) {
     if (event.key==="Escape") {
       this.close();
     }

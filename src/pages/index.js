@@ -67,13 +67,6 @@ const api = new Api({
   }
 });
 
-const cardsList = new Section({
-  renderer: (item) => {
-    const card = createNewCard(item);
-    cardsList.addItem(card, 'append');
-  }
-}, cardsContainer);
-
 const popupPicture = new PopupWithImage(
   popupSelectors,
   popupWithImageElement,
@@ -91,14 +84,13 @@ const popupAvatar = new PopupWithForm(
       api.updateAvatar(input.avatar)
         .then((result) => {          
           userInfo.setUserAvatar(result.avatar);
+          popupAvatar.close();
         })
         .catch((error) => {
           console.log(error)
         })
         .finally(() => {
-          popupAvatar.close();
-          // Чтобы надпись на кнопке не менялась на "Сохранить", пока окно еще успело закрыться
-          setTimeout(() => popupAvatar.showSavingMsg(false), 6000);
+          popupAvatar.showSavingMsg(false);
         })
     }      
   }
@@ -120,14 +112,13 @@ const popupProfile = new PopupWithForm(
         .then((result) => {
           userInfo.setUserInfo(result.name, result.about);
           userInfo.setUserAvatar(result.avatar);
+          popupProfile.close();
         })
         .catch((error) => {
           console.log(error)
         })
         .finally(() => {
-          popupProfile.close();
-          // Чтобы надпись на кнопке не менялась на "Сохранить", пока окно еще успело закрыться
-          setTimeout(() => popupProfile.showSavingMsg(false), 6000);
+          popupProfile.showSavingMsg(false);
         });
     }
   }
@@ -136,6 +127,13 @@ const profileFormValidator = new FormValidator(
   formSelectors,
   formProfile
 );
+
+const cardsList = new Section({
+  renderer: (item) => {
+    const card = createNewCard(item, userId);
+    cardsList.addItem(card, 'append');
+  }
+}, cardsContainer);
 
 const popupAddCard = new PopupWithForm(
   popupSelectors,
@@ -147,16 +145,15 @@ const popupAddCard = new PopupWithForm(
       popupAddCard.showSavingMsg(true);
       api.addCard(inputs.caption, inputs.link)
         .then((result) => {
-          const card = createNewCard(result);
+          const card = createNewCard(result, userId);
           cardsList.addItem(card);
+          popupAddCard.close();
         })
         .catch((error) => {
           console.log(error);
         })
         .finally(() => {
-          popupAddCard.close();
-          // Чтобы надпись на кнопке не менялась на "Сохранить", пока окно еще успело закрыться
-          setTimeout(() => popupAddCard.showSavingMsg(false), 6000);
+          popupAddCard.showSavingMsg(false);
         })
     }
   }
@@ -178,21 +175,20 @@ const popupConfirmDelete = new PopupWithForm(
         .then((result) => {
           temporaryCard.card.deleteCard();
           temporaryCard = null;
+          popupConfirmDelete.close();
         })
         .catch((error) => {
           console.log(error);
         })
         .finally(() => {
-          popupConfirmDelete.close();
-          // Чтобы надпись на кнопке не менялась на "Да", пока окно еще успело закрыться
-          setTimeout(() => popupConfirmDelete.showSavingMsg(false), 6000);
+          popupConfirmDelete.showSavingMsg(false);
         })
     }
   }
 );
 
 /* Functions */
-const createNewCard = (item) => {
+const createNewCard = (item, userId) => {
   const card = new Card (
     cardsSelectors,
     item,
@@ -231,16 +227,6 @@ const createNewCard = (item) => {
   return (card.getCard());
 }
 
-const getCards = () => {
-  api.getCards()
-    .then((result) => {
-      cardsList.renderItems(result);
-    })
-    .catch((error) => {
-      console.log(error)
-    });
-}
-
 /* EventListeners */
 buttonPopupAvatar.addEventListener('click', () => {  
   popupAvatar.open();
@@ -257,17 +243,21 @@ buttonAddCardOpen.addEventListener('click', () => popupAddCard.open());
 popupAddCard.setEventListeners();
 
 /* Start */
-getCards();
 
-api.getUserInfo()
-  .then((result) => {
-    userId = result._id;
-    userInfo.setUserInfo(result.name, result.about);
-    userInfo.setUserAvatar(result.avatar);
+Promise.all([
+  api.getCards(),
+  api.getUserInfo()
+])
+  .then ((result) => {
+    const [cards, user] = result;
+    userId = user._id;
+    cardsList.renderItems(cards);
+    userInfo.setUserInfo(user.name, user.about);
+    userInfo.setUserAvatar(user.avatar);
   })
-  .catch(error => 
+  .catch ((error) => {
     console.log(error)
-  );
+  })
 
 avatarFormValidator.enableValidation();
 
