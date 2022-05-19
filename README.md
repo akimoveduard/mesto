@@ -24,13 +24,14 @@
 * Webpack
 
 ## Инструкция по установке
-`git clone https://github.com/akimoveduard/mesto.git`
+```
+git clone https://github.com/akimoveduard/mesto.git
 
-`cd mesto
+cd mesto
 npm instal wepback --save-dev
-npm run build`
-
-### Системные требования
+npm run build
+```
+#### Системные требования:
 * Node.js ^17.1.0
 * Npm ^8.4.0
 
