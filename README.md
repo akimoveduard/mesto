@@ -15,6 +15,8 @@
 ## Технологии:
 <p><img src="https://img.shields.io/badge/html5-%23E34F26.svg" height="24" alt="HTML5"> <img src="https://img.shields.io/badge/css3-%231572B6.svg" height="24" alt="CSS3"> <img src="https://img.shields.io/badge/javascript-%23323330.svg" height="24" alt="JavaScript"> <img src="https://img.shields.io/badge/node.js-6DA55F" height="24" alt="Node.js"> <img src="https://img.shields.io/badge/webpack-%238DD6F9.svg" height="24" alt="Webpack"> <img src="https://img.shields.io/badge/git-%23F05033.svg" height="24" alt="Git"> <img src="https://img.shields.io/badge/github-%23121011.svg" height="24" alt="GitHub"></p>
 
+* HTML
+* CSS
 * Flexbox
 * Grid
 * Git
